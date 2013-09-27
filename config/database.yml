@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ads_development
+  pool: 5
+  timeout: 5000
+  username: sasha
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ads_test
+  pool: 5
+  timeout: 5000
+  username: sasha
+  password: wubi
