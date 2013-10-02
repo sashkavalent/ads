@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'pg'
+gem "cancan"
+gem 'devise'
+gem 'bootstrap-sass', '2.1'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end

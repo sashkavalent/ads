@@ -34,4 +34,10 @@ Ads::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+  ##### From devise install console
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  #In production, :host should be set to the actual host of your application.
+
 end
