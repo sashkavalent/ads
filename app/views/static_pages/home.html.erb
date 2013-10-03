@@ -1,0 +1,10 @@
+<% provide(:title, "Home") %>
+<ul>
+	<% if user_signed_in? %>
+		<%= render 'layouts/ad_form' %>
+	<% end %>
+	<% @ads.each do |ad| %>
+		<li><%= ad.content %>  <%= ad.user_id %> </li>
+	<% end %>
+	<%= will_paginate @ads %>
+</ul>

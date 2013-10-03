@@ -5,6 +5,7 @@ Ads::Application.routes.draw do
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
   devise_for :users, :controllers => { :sessions => "users/sessions" }
+  resources :ads, only: [:create, :destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

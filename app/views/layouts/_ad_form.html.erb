@@ -1,0 +1,4 @@
+<%= form_for(@ad) do |f| %>
+  <%= f.text_area :content, placeholder: "Compose new ad..." %>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

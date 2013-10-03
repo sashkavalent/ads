@@ -9,6 +9,7 @@ gem "cancan"
 gem 'devise'
 gem 'bootstrap-sass', '2.1'
 group :development, :test do
+	gem "pry", "0.9.12.2"
   gem 'rspec-rails', '2.11.0'
 end
 
