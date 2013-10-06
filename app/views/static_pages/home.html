@@ -1,7 +1,0 @@
-<% provide(:title, "Home") %>
-<ul>
-	<% @ads.each do |ad| %>
-		<li><%= ad.content %>  <%= ad.user_id %> </li>
-	<% end %>
-	<%= will_paginate @ads %>
-</ul>
