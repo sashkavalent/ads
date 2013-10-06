@@ -1,0 +1,15 @@
+<% provide(:title, "Users") %>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.email %>
+      <% if ((can? :delete, user) && (user != current_user)) %>
+        <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" },
+                                  title: user.email %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @ads %>
+

@@ -4,15 +4,15 @@
 		<%= render 'layouts/ad_form' %>
 	<% end %>
 	<% @ads.each do |ad| %>
-		<li><%= ad.content %><br>
+		<li><%= ad.content %>
+      <% if can? :delete, ad %>
+        <%= link_to "delete", ad, method: :delete,
+                                  data: { confirm: "You sure?" },
+                                  title: ad.content %>
+      <% end %><br>
       <%= User.find_by_id(ad.user_id).email %>
 			<% current_user = User.new %>
-			<% if can? :delete, ad %>
-    		<%= link_to "delete", ad, method: :delete,
-                                  data: { confirm: "You sure?" },
-         	                        title: ad.content %>
-  			<% end %>
-  		</li>
+  	</li>
 	<% end %>
 	<%= will_paginate @ads %>
 </ul>
