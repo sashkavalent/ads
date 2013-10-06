@@ -4,7 +4,8 @@
 		<%= render 'layouts/ad_form' %>
 	<% end %>
 	<% @ads.each do |ad| %>
-		<li><%= ad.content %>  <%= ad.user_id %> 
+		<li><%= ad.content %><br>
+      <%= User.find_by_id(ad.user_id).email %>
 			<% current_user = User.new %>
 			<% if can? :delete, ad %>
     		<%= link_to "delete", ad, method: :delete,
