@@ -1,0 +1,10 @@
+<% provide(:title, current_user.email) %>
+<table>
+  <td> <h3> <%= current_user.email %> </h3> </td>
+  <td> <%= link_to "edit", edit_user_registration_path %> </td>
+</table>
+<%= render 'layouts/ad_form' %>
+<ul>
+  <%= render @ads %>
+  <%= will_paginate @ads %>
+</ul>
