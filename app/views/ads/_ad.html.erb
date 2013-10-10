@@ -1,0 +1,12 @@
+<li><%= ad.content %>
+  <% if can? :delete, ad %>
+    <%= link_to "delete", ad, method: :delete,
+                              data: { confirm: "You sure?" },
+                              title: ad.content %>
+  <% end %>
+  <% if can? :update, ad %>
+    <%= link_to "edit", ad_path(:id => ad)%>
+  <% end %><br>
+  <%= User.find_by_id(ad.user_id).email %>
+  <% current_user = User.new %>
+</li>

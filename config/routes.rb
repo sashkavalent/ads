@@ -1,12 +1,13 @@
 Ads::Application.routes.draw do
   # devise_for :users
 
-  root :to => 'static_pages#home'
+  root :to => 'ads#index'
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
-  match '/allusers', to: 'users#users'
+  match '/all_users', to: 'users#index'
+  match '/profile', to: 'users#show'
   devise_for :users, :controllers => { :users => "users" }
-  resources :ads, only: [:create, :destroy]
+  resources :ads, only: [:create, :destroy, :index, :update, :show]
   resources :users, only: [:destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
