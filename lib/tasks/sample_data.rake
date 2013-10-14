@@ -14,5 +14,17 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.ads.create!(content: content) }
     end
+    email = "admin@gmail.com"
+    password  = "programma"
+    User.create!(email: email,
+                 password: password,
+                 password_confirmation: password,
+                 remember_me: false)
+    email = "user@gmail.com"
+    password  = "programma"
+    User.create!(email: email,
+                 password: password,
+                 password_confirmation: password,
+                 remember_me: false)
   end
 end

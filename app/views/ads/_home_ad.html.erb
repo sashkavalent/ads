@@ -1,0 +1,6 @@
+<% if ad.published? %>
+<li>
+  <span class="content"><%= ad.content %></span>
+  <span  class="user"> <%= User.find_by_id(ad.user_id).email %> </span>
+</li>
+<% end %>

@@ -18,6 +18,7 @@ class AdsController < ApplicationController
 		@ads = Ad.paginate(:page => params[:page], :per_page => 20)
 	end
 	def update
+		binding.pry
 		@ad = Ad.find_by_id(params[:id])
 		@ad.content = params[:ad][:content]
 		@ad.save
@@ -25,5 +26,12 @@ class AdsController < ApplicationController
 	end
 	def show
 		@ad = Ad.find_by_id(params[:id])
+	end
+	def change_state
+		@ad = Ad.find_by_id(params[:id])
+		@ad.public_send(params[:state_event])
+		@ad.save
+		flash[:notice] = "Status of ad was changed"
+		redirect_to(:back)
 	end
 end
