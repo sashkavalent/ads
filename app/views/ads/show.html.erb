@@ -1,4 +1,5 @@
-<%= form_for @ad, :url => ad_path(@ad), :method => :put do |f| %>
-  <%= f.text_area :content, placeholder: @ad.content %><br>
-  <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
+<% if can? :update, @ad %>
+  <%= render 'ad_form', :ad => @ad %>
+<% else %>
+
 <% end %>

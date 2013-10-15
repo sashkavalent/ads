@@ -18,9 +18,9 @@ class AdsController < ApplicationController
 		@ads = Ad.paginate(:page => params[:page], :per_page => 20)
 	end
 	def update
-		binding.pry
 		@ad = Ad.find_by_id(params[:id])
 		@ad.content = params[:ad][:content]
+		@ad.photos_attributes = params[:ad][:photos_attributes]
 		@ad.save
 		redirect_to profile_path
 	end

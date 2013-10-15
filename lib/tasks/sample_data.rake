@@ -12,14 +12,15 @@ namespace :db do
     users = User.all(limit: 6)
     50.times do
       content = Faker::Lorem.sentence(5)
-      users.each { |user| user.ads.create!(content: content) }
+      users.each { |user| user.ads.create!(content: content, state: 'published') }
     end
     email = "admin@gmail.com"
     password  = "programma"
     User.create!(email: email,
                  password: password,
                  password_confirmation: password,
-                 remember_me: false)
+                 remember_me: false,
+                 role: 'admin')
     email = "user@gmail.com"
     password  = "programma"
     User.create!(email: email,

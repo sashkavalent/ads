@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010110159) do
+ActiveRecord::Schema.define(:version => 20131015180125) do
 
   create_table "ads", :force => true do |t|
     t.string   "content"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20131010110159) do
   end
 
   add_index "ads", ["user_id", "created_at"], :name => "index_ads_on_user_id_and_created_at"
+
+  create_table "photos", :force => true do |t|
+    t.integer  "ad_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

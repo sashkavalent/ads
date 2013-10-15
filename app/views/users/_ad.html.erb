@@ -1,12 +1,16 @@
 <li>
-  <span class="content"><%= ad.content %>
+  <% ad.photos.each do |photo| %>
+    <%= image_tag photo.image.url(:small) %>
+    <%= photo.name %><br>
+  <% end %>
+  <span class="content"><%= ad.content %><br>
     <% if can? :delete, ad %>
       <%= link_to "delete", ad, method: :delete,
                                 data: { confirm: "You  sure?" },
                                 title: ad.content %>
     <% end %>
     <% if ((can? :update, ad) && ad.drafting?) %>
-      <%= link_to "edit", ad_path(:id => ad)%>
+      <%= link_to "edit", ad %>
     <% end %>
   </span>
   <span  class="user"> <%= ad.state %> </span>
