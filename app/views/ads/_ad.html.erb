@@ -1,0 +1,14 @@
+<li>
+  <span class="cont"><%= link_to ad.content, ad %></span><br>
+    <% ad.photos.each do |photo| %>
+      <div class="photo">
+        <p><%= image_tag photo.image.url(:small) %></p>
+        <p class="caption"><%= photo.name %></p>
+      </div>
+    <% end %>
+  <div class="user">
+    <%= ad.state %>
+    by <%= @users.select { |user| user.id == ad.user_id}.first.email %> <br>
+  </div>
+  <%= render 'ads/links', :ad => ad %>
+</li>

@@ -3,5 +3,7 @@
   <td> <h3> <%= current_user.email %> </h3> </td>
   <td> <%= link_to "edit", edit_user_registration_path %> </td>
 </table>
-<%= render 'ads/ad_form' %>
-<%= render 'ads' %>
+<% if !current_user.admin? %>
+  <%= render 'ads/ad_form' %>
+<% end %>
+<%= render 'ads/ads' %>

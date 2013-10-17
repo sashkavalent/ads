@@ -1,4 +1,18 @@
 @import "bootstrap";
+$lightGray: #999;
+$grayMediumLight: #eaeaea;
+	.cont a {
+		color: #444444;
+	}
+   .photo {
+    margin: 0 10px 0 0; /* Отступы */
+    padding: 10px 0; /* Поля сверху и снизу */
+    text-align: center; /* Выравнивание по центру */
+    display: inline-block; /* Строчно-блочный элемент */
+   }
+   .photo p {
+    margin: 0; /* Отступы */
+   }
 	.form {
 		margin-left: 42%;
 	}
@@ -21,16 +35,10 @@
     border-top: 1px solid #e8e8e8;
   }
 }
-.content {
-  display: block;
-}
 .user {
   color: $grayLight;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
+
 aside {
   textarea {
     height: 100px;
@@ -38,8 +46,7 @@ aside {
   }
 }
 	/* universal */
-$lightGray: #999;
-$grayMediumLight: #eaeaea;
+
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;

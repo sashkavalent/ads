@@ -1,0 +1,13 @@
+<% if can? :destroy, ad %>
+  <%= link_to "delete", ad, method: :delete,
+                            data: { confirm: "You  sure?" },
+                            title: ad.content %>
+<% end %>
+<% if ((can? :update, ad) && ad.drafting?) %>
+  <%= link_to "edit", ad %>
+<% end %>
+<% if ((current_user.try(:admin?) && ad.posting?) || ad.drafting? || ad.rejected?) %>
+  <% ad.state_transitions.each do |transition| %>
+    <%= link_to transition.event, :action => 'change_state', :controller => 'ads', :id => ad, :state_event => transition.event, :method => :put %>
+  <% end %>
+<% end %>

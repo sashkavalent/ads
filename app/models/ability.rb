@@ -4,14 +4,18 @@ class Ability
   def initialize(user)
     user ||= User.new(role: "guest")
     if user.role? :guest
-      can :read, :all
+      can :read, Ad
     end
     if user.role? :user
-      can :delete, user.ads
-      can :update, user.ads
+      can :read, :all
+      can :destroy, user.ads
+      can :update, user.ads.where(state: "drafting")
+      can :change_state, user.ads.where(state: "drafting")
+      can :create, Ad
     end
     if user.role? :admin
-      can :manage, :all
+      can :destroy, :all
+      can :change_state, Ad
     end
     # Define abilities for the passed in user here. For example:
     #

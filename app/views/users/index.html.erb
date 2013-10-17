@@ -1,9 +1,9 @@
 <% provide(:title, "User") %>
-<ul>
+<ul class="ads">
   <% @users.each do |user| %>
     <li>
       <%= user.email %>
-      <% if ((can? :delete, user) && (user != current_user)) %>
+      <% if ((can? :destroy, user) && (user != current_user)) %>
         <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" },
                                   title: user.email %>
