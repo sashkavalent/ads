@@ -1,1 +1,1 @@
-Sample application for TwineSlash
+Sample application for TwinSlash

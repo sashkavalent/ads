@@ -1,11 +1,6 @@
 <li>
   <span class="cont"><%= link_to ad.content, ad %></span><br>
-    <% ad.photos.each do |photo| %>
-      <div class="photo">
-        <p><%= image_tag photo.image.url(:small) %></p>
-        <p class="caption"><%= photo.name %></p>
-      </div>
-    <% end %>
+  <span class="photos"> <%= render_gallery_for ad.photos, original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
   <div class="user">
     <%= ad.state %>
     by <%= @users.select { |user| user.id == ad.user_id}.first.email %> <br>
