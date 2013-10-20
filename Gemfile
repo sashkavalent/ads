@@ -12,6 +12,8 @@ gem 'bootstrap-sass', '2.1'
 gem "nested_form"
 gem "paperclip", "~> 3.0"
 gem "whenever"
+gem "paperclip-dropbox"
+gem 'hermitage'
 group :development, :test do
 	gem "pry", "0.9.12.2"
   gem 'rspec-rails', '2.11.0'

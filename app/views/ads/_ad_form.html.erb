@@ -1,7 +1,7 @@
 <%= nested_form_for @ad do |f| %>
   <%= f.text_area :content, placeholder: "Compose new ad..." %><br>
     <%= f.fields_for :photos, :html => { :multipart => true} do |photo_form| %>
-      <%= photo_form.file_field :image %><br>
+      <%= photo_form.file_field :file %><br>
       <%= photo_form.text_field :name, placeholder: "Enter name of photo..." %>
       <%= photo_form.link_to_remove "Remove this photo" %>
     <% end %>
