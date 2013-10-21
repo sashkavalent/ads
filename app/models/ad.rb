@@ -1,7 +1,8 @@
 class Ad < ActiveRecord::Base
   attr_accessible :content, :photos_attributes
   belongs_to :user
-  validates :user_id, presence: true, length: {maximum: 140}
+  validates :user_id, presence: true
+  validates :content, presence: true, length: {maximum: 140}, :format => { :with => GlobalConstants::Content_regexp }
   default_scope order: 'ads.created_at DESC'
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :allow_destroy => true

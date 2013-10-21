@@ -6,10 +6,10 @@ class AdsController < ApplicationController
 		@ad = current_user.ads.build(params[:ad])
 		if @ad.save
 			flash[:notice] = "Ad is created"
-			redirect_to(:back)
 		else
-			render root_path
+			flash[:error] = @ad.errors.full_messages.join(". ")
 		end
+		redirect_to(:back)
 	end
 	def destroy
 		@ad.destroy
