@@ -1,11 +1,13 @@
 class Ad < ActiveRecord::Base
-  attr_accessible :content, :photos_attributes
+  attr_accessible :content, :photos_attributes, :ad_type_id
 
   belongs_to :user
+  belongs_to :ad_type
   has_many :photos, :dependent => :destroy
 
   validates :user_id, presence: true
   validates :content, presence: true, length: {maximum: 140}, format: { with: GlobalConstants::Content_regexp }
+  validates :ad_type_id, presence: true
 
   default_scope order: 'ads.created_at DESC'
 
