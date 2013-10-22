@@ -5,5 +5,7 @@
 </table>
 <% if !current_user.admin? %>
   <%= render 'ads/ad_form' %>
+<% else %>
+  <%= link_to "Ad types", AdType %>
 <% end %>
 <%= render 'ads/ads' %>

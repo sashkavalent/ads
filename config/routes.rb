@@ -11,6 +11,7 @@ Ads::Application.routes.draw do
 
   resources :ads, only: [:create, :destroy, :index, :update, :show]
   resources :users, only: [:destroy]
+  resources :ad_types
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

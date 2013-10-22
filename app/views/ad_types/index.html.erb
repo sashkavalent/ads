@@ -1,0 +1,15 @@
+<%= form_for AdType.new() do |f| %>
+  <%= f.text_field :name, placeholder: "Type ad type))" %>
+  <%= f.submit "New", class: "btn btn-large btn-primary" %>
+<% end %>
+<ul class="ads">
+  <% @ad_types.each do |ad_type| %>
+    <li>
+      <%= ad_type.name %>
+      <%= link_to "delete", ad_type, method: :delete,
+                          data: { confirm: "You  sure?" },
+                          title: ad_type.name %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to GlobalConstants::Back_link, profile_path %>

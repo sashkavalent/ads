@@ -1,6 +1,6 @@
 <% if can? :update, @ad %>
   <%= render 'ad_form', :ad => @ad %>
 <% else %>
-  <%= render 'ad', :ad => @ad, :users => @users %>
+  <%= render 'ad', ad: @ad, users: @users, ad_types: @ad_types  %>
 <% end %>
-<%= link_to "<= back", session.delete(:return_to) %>
+<%= link_to GlobalConstants::Back_link, session.delete(:return_to) %>

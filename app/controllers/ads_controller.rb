@@ -3,6 +3,7 @@ class AdsController < ApplicationController
 
 	before_filter :load_users, :only => [:index, :show]
 	before_filter :load_ad, :only => [:destroy, :update, :show, :change_state]
+	before_filter :load_ad_types, only: [:index, :show]
 
 	def create
 		@ad = current_user.ads.build(params[:ad])
@@ -26,8 +27,10 @@ class AdsController < ApplicationController
 	end
 
 	def update
-		@ad.content = params[:ad][:content]
-		@ad.photos_attributes = params[:ad][:photos_attributes]
+		@ad.attributes = params[:ad]
+		# @ad.content = params[:ad][:content]
+		# @ad.try(:photos_attributes) ||= params[:ad][:photos_attributes]
+		# @ad.ad_type_id = params[:ad][:ad_type_id]
 		@ad.save
 		redirect_to profile_path
 	end
@@ -46,10 +49,14 @@ class AdsController < ApplicationController
 	protected
 
 		def load_users
-			@users = User.all
+			@users = User.scoped
 		end
 
 		def load_ad
 			@ad = Ad.find_by_id(params[:id])
+		end
+
+		def load_ad_types
+			@ad_types = AdType.scoped
 		end
 end

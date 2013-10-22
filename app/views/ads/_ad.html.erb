@@ -2,8 +2,9 @@
   <span class="cont"><%= link_to ad.content, ad %></span><br>
   <span class="photos"> <%= render_gallery_for ad.photos, original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
   <div class="user">
+    <%= @ad_types.where(id: ad.ad_type_id).first.name %><br>
     <%= ad.state %>
-    by <%= @users.select { |user| user.id == ad.user_id}.first.email %> <br>
+    by <%= @users.where(id: ad.user_id).first.email %>
   </div>
   <%= render 'ads/links', :ad => ad %>
 </li>

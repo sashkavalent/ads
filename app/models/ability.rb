@@ -19,6 +19,7 @@ class Ability
     if user.role? :admin
       can :destroy, :all
       can :change_state, Ad
+      can :manage, AdType
     end
   end
 end

@@ -1,7 +1,7 @@
-@import "bootstrap";
-	.photos li {
-		width: 100px;
+	li {
+  	list-style-type: none;
 	}
+@import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
 	.cont a {
@@ -211,3 +211,8 @@ footer {
 	@extend .error;
 }
 }
+	.photos li {
+		border-top: 0px;
+		margin-bottom: 0px;
+		width: 100px;
+	}
