@@ -16,10 +16,9 @@ class UsersController < ApplicationController
     @ad = current_user.ads.build if user_signed_in?
     if current_user.admin?
       @ads = Ad.where(state: "posting").paginate(:page => params[:page], :per_page => 5)
-      @users = @ads.map {|ad| User.find_by_id(ad.user_id)}.uniq
     else
       @ads = Ad.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5)
     end
-    @ad_types = AdType.scoped
+    @ad_types = AdType.all
   end
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Photo do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @ad_type = AdType.new(name: "example")
+  end
+  subject { @ad_type }
+  it { should respond_to(:name) }
 end
