@@ -3,6 +3,6 @@ class AdType < ActiveRecord::Base
 
   has_many :ads
 
-  validates :name, format: { with: GlobalConstants::Content_regexp},
+  validates :name, presence: true, format: { with: GlobalConstants::Content_regexp},
               length: {maximum: 20}
 end

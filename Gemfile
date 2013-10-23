@@ -14,6 +14,7 @@ gem "paperclip", "~> 3.0"
 gem "whenever"
 gem "paperclip-dropbox"
 gem 'hermitage'
+gem 'childprocess', '0.3.6'
 group :development, :test do
 	gem "pry", "0.9.12.2"
   gem 'rspec-rails', '2.11.0'
