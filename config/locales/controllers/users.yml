@@ -1,0 +1,3 @@
+en:
+  users:
+    deleted: "Account %{user} was deleted."

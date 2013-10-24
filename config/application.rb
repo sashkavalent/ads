@@ -70,5 +70,8 @@ module Ads
 
     ###### For paperclip-dropbox from http://jayandrap.wordpress.com/2013/01/24/paperclip-dropbox/
     config.autoload_paths += %W(#{config.root}/extras)
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.default_locale = :en
   end
 end

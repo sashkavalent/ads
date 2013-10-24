@@ -1,0 +1,5 @@
+en:
+  ad_types:
+    added: 'Type was added.'
+    deleted: 'Type was deleted.'
+    cannot_delete: 'Cannot delete this type. There are its ads.'

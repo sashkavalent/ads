@@ -6,7 +6,7 @@ class AdsController < ApplicationController
   def create
     @ad = current_user.ads.build(params[:ad])
     if @ad.save
-      flash[:notice] = 'Ad is created'
+      flash[:notice] = t(:added, scope: [:ads])
     else
       flash[:error] = @ad.errors.full_messages.join('. ')
     end
@@ -15,7 +15,7 @@ class AdsController < ApplicationController
 
   def destroy
     @ad.destroy
-    flash[:notice] = 'Ad is deleted'
+    flash[:notice] = t(:deleted, scope: [:ads])
     redirect_to(:back)
   end
 
@@ -39,7 +39,7 @@ class AdsController < ApplicationController
   def change_state
     @ad.public_send(params[:state_event])
     @ad.save
-    flash[:notice] = 'Status of ad was changed'
+    flash[:notice] = t(:status_changed, scope: [:ads])
     redirect_to(:back)
   end
 
