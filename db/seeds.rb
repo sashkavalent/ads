@@ -1,9 +1,9 @@
-AdType.create!(name: "Auto")
-AdType.create!(name: "Real estate")
-AdType.create!(name: "Animals")
+AdType.create!(name: 'Auto')
+AdType.create!(name: 'Real estate')
+AdType.create!(name: 'Animals')
 15.times do |n|
-  email = "example-#{n+1}@sasha.org"
-  password  = "password"
+  email = Faker::Internet.email
+  password  = 'password'
   User.create!(email: email,
                password: password,
                password_confirmation: password,
@@ -25,18 +25,18 @@ users.each do |user|
   end
 end
 
-email = "admin@gmail.com"
-password  = "programma"
+email = 'admin@gmail.com'
+password  = 'programma'
 User.create!(email: email,
              password: password,
              password_confirmation: password,
              remember_me: false,
-             role: "admin")
+             role: 'admin')
 
-email = "user@gmail.com"
-password  = "programma"
+email = 'user@gmail.com'
+password  = 'programma'
 User.create!(email: email,
              password: password,
              password_confirmation: password,
              remember_me: false,
-             role: "user")
+             role: 'user')

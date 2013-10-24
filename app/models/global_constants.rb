@@ -2,5 +2,5 @@
 
 module GlobalConstants
   Content_regexp = /^[\w ,\.А-я]*$/.freeze
-  Back_link = "<= back"
+  Back_link = '<= back'
 end

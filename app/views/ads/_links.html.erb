@@ -1,10 +1,10 @@
 <% if can? :destroy, ad %>
-  <%= link_to "delete", ad, method: :delete,
-                            data: { confirm: "You  sure?" },
+  <%= link_to 'delete', ad, method: :delete,
+                            data: { confirm: 'You  sure?' },
                             title: ad.content %>
 <% end %>
 <% if ((can? :update, ad) && ad.drafting?) %>
-  <%= link_to "edit", ad %>
+  <%= link_to 'edit', ad %>
 <% end %>
 <% if ((current_user.try(:admin?) && ad.posting?) || ad.drafting? || ad.rejected?) %>
   <% ad.state_transitions.each do |transition| %>

@@ -1,10 +1,10 @@
 <% provide(:title, current_user.email) %>
 <table>
   <td> <h3> <%= current_user.email %> </h3> </td>
-  <td> <%= link_to "edit", edit_user_registration_path %> </td>
+  <td> <%= link_to 'edit', edit_user_registration_path %> </td>
 </table>
 <% if current_user.admin? %>
-  <%= link_to "Ad types", AdType %>
+  <%= link_to 'Ad types', AdType %>
 <% else %>
   <%= render 'ads/ad_form' %>
 <% end %>
