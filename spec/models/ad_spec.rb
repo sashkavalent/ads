@@ -39,4 +39,8 @@ describe Ad do
     it { should_not be_valid }
   end
 
+  describe 'with content that is not set of words' do
+    before { @ad.content = 'Sf$# fds%' }
+    it { should_not be_valid }
+  end
 end

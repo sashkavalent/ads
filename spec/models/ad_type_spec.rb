@@ -13,7 +13,12 @@ describe AdType do
   end
 
   describe 'with content that is too long' do
-    before { @ad_type.name = 'a' * 201 }
+    before { @ad_type.name = 'a' * 21 }
+    it { should_not be_valid }
+  end
+
+  describe 'with content that is not set of words' do
+    before { @ad_type.name = 'Sf$# fds%' }
     it { should_not be_valid }
   end
 end

@@ -1,6 +1,6 @@
 <%= form_for AdType.new() do |f| %>
   <%= f.text_field :name, placeholder: 'Type ad type))' %>
-  <%= f.submit 'New', class: 'btn btn-large btn-primary' %>
+  <%= f.submit 'Ok', class: 'btn btn-large btn-primary' %>
 <% end %>
 <ul class='ads'>
   <% @ad_types.each do |ad_type| %>

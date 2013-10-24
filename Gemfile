@@ -36,6 +36,6 @@ gem 'jquery-rails', '2.0.2'
 group :test do
 	gem 'factory_girl_rails', '4.1.0'
   gem 'capybara', '1.1.2'
-  gem 'rb-inotify', '0.8.8'
+  gem 'rb-inotify', '~> 0.9'
   gem 'libnotify', '0.5.9'
 end

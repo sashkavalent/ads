@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature 'Sign in and log out.' do
+feature 'Access to site.' do
   let(:user) { FactoryGirl.create(:user) }
 
-  scenario 'User signs in.' do
+  scenario 'User logs in and logs out.' do
     visit '/'
     click_link 'Login'
 
@@ -13,6 +13,7 @@ feature 'Sign in and log out.' do
 
     expect(page).to have_content('Signed in successfully.')
     expect(page).to have_content('Logout')
+    expect(page).to have_content('Profile')
 
     click_link 'Logout'
 
