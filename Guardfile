@@ -25,7 +25,7 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 
-  #####чтобы Guard запускал правильные тесты после обновления интеграционных тестов и представлений
+  # Чтобы Guard запускал правильные тесты после обновления интеграционных тестов и представлений
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  do |m|
     ["spec/routing/#{m[1]}_routing_spec.rb",
      "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb",
@@ -37,6 +37,9 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
     (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" :
                        "spec/requests/#{m[1].singularize}_pages_spec.rb")
   end
+
+  # Run feature tests after changes in app/
+  watch(%r{^app/}) { "spec/features" }
 
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }

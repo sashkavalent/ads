@@ -25,12 +25,14 @@ class AdsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @ad.attributes = params[:ad]
     @ad.save
     redirect_to profile_path
   end
 
   def show
+    @ad_types = AdType.all
     session[:return_to] ||= request.referer
   end
 

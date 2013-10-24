@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 
   default_scope order: 'users.created_at DESC'
 
   after_create :default_role
+
+  after_initialize :guest_role
 
   def role?(base_role)
   	ROLES.index(base_role.to_s) <= ROLES.index(role)
@@ -23,7 +25,11 @@ class User < ActiveRecord::Base
   private
 
     def default_role
-      self.role ||= 'user'
+      self.role = 'user' if self.role == 'guest'
       self.save
+    end
+
+    def guest_role
+      self.role ||= 'guest'
     end
 end

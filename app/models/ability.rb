@@ -2,8 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new(role: 'guest')
-
+    user ||= User.new()
     if user.role? :guest
       can :read, Ad
     end
