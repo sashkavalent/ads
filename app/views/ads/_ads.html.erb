@@ -1,4 +1,4 @@
-<ul class="ads">
+<ul class='ads'>
   <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad, :users => @users %>
   <%= will_paginate @ads %>
   <% if (@ads.blank? && current_user.try(:admin?)) %>

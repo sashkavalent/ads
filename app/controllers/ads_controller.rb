@@ -6,21 +6,21 @@ class AdsController < ApplicationController
   def create
     @ad = current_user.ads.build(params[:ad])
     if @ad.save
-      flash[:notice] = "Ad is created"
+      flash[:notice] = 'Ad is created'
     else
-      flash[:error] = @ad.errors.full_messages.join(". ")
+      flash[:error] = @ad.errors.full_messages.join('. ')
     end
     redirect_to(:back)
   end
 
   def destroy
     @ad.destroy
-    flash[:notice] = "Ad is deleted"
+    flash[:notice] = 'Ad is deleted'
     redirect_to(:back)
   end
 
   def index
-    @ads = Ad.where(state: "published").paginate(:page => params[:page], :per_page => 8)
+    @ads = Ad.where(state: 'published').paginate(:page => params[:page], :per_page => 8)
     render '_ads'
   end
 
@@ -37,7 +37,7 @@ class AdsController < ApplicationController
   def change_state
     @ad.public_send(params[:state_event])
     @ad.save
-    flash[:notice] = "Status of ad was changed"
+    flash[:notice] = 'Status of ad was changed'
     redirect_to(:back)
   end
 

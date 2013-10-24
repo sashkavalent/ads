@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new(role: "guest")
+    user ||= User.new(role: 'guest')
 
     if user.role? :guest
       can :read, Ad
@@ -11,8 +11,8 @@ class Ability
     if user.role? :user
       can :read, :all
       can :destroy, user.ads
-      can :update, user.ads.where(state: "drafting")
-      can :change_state, user.ads.where(state: "drafting")
+      can :update, user.ads.where(state: 'drafting')
+      can :change_state, user.ads.where(state: 'drafting')
       can :create, Ad
     end
 
