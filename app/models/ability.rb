@@ -3,11 +3,11 @@ class Ability
 
   def initialize(user)
     user ||= User.new()
-    if user.role? :guest
+    if user.role.guest?
       can :read, Ad
     end
 
-    if user.role? :user
+    if user.role.user?
       can :read, :all
       can :destroy, user.ads
       can :update, user.ads.where(state: 'drafting')
@@ -15,9 +15,10 @@ class Ability
       can :create, Ad
     end
 
-    if user.role? :admin
+    if user.role.admin?
+      can :read, :all
       can :destroy, :all
-      can :change_state, Ad
+      can :change_state, Ad.where(state: 'posting')
       can :manage, AdType
     end
   end

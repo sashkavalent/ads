@@ -1,7 +1,7 @@
 <ul class='ads'>
   <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad, :users => @users %>
   <%= will_paginate @ads %>
-  <% if (@ads.blank? && current_user.try(:admin?)) %>
+  <% if (@ads.blank? && current_user.try(:role).try(:admin?)) %>
     <p> No new posted ads </p>
   <% end %>
 </ul>

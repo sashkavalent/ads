@@ -6,7 +6,7 @@
 <% if ((can? :update, ad) && ad.drafting?) %>
   <%= link_to 'edit', ad %>
 <% end %>
-<% if ((current_user.try(:admin?) && ad.posting?) || ad.drafting? || ad.rejected?) %>
+<% if ((current_user.try(:role).try(:admin?) && ad.posting?) || ad.drafting? || ad.rejected?) %>
   <% ad.state_transitions.each do |transition| %>
     <%= link_to transition.event, :action => 'change_state', :controller => 'ads', :id => ad, :state_event => transition.event, :method => :put %>
   <% end %>
