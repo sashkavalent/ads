@@ -25,7 +25,6 @@ class AdsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @ad.attributes = params[:ad]
     @ad.save
     redirect_to profile_path

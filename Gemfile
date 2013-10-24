@@ -15,6 +15,8 @@ gem 'whenever'
 gem 'paperclip-dropbox'
 gem 'hermitage'
 gem 'childprocess', '0.3.6'
+gem 'enumerize'
+
 group :development, :test do
 	gem 'pry', '0.9.12.2'
   gem 'rspec-rails', '2.11.0'
@@ -23,8 +25,6 @@ group :development, :test do
   gem 'spork', '0.9.2'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
