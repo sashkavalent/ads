@@ -6,19 +6,24 @@ class UsersController < ApplicationController
   end
 
   def destroy
+
     @user = User.find_by_id(params[:id])
     @user.destroy
-    flash[:notice] = "Account #{@user.email} was deleted"
+
+    flash[:notice] = t(:deleted, scope: [:users], user: @user.email)
     redirect_to '/all_users'
   end
 
   def show
+
     @ad = current_user.ads.build if user_signed_in?
+
     if current_user.admin?
       @ads = Ad.where(state: 'posting').paginate(:page => params[:page], :per_page => 5)
     else
       @ads = Ad.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5)
     end
+
     @ad_types = AdType.all
   end
 end

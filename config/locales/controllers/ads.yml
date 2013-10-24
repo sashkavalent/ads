@@ -1,0 +1,5 @@
+en:
+  ads:
+    added: 'Ad was added'
+    deleted: 'Ad was deleted'
+    status_changed: 'Status of ad was changed'

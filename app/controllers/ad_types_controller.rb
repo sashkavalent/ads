@@ -6,7 +6,7 @@ class AdTypesController < ApplicationController
     @ad_type = AdType.new(params[:ad_type])
 
     if @ad_type.save
-      flash[:notice] = 'Type was added'
+      flash[:notice] = t(:added, scope: [:ad_types])
     else
       flash[:error] = @ad_type.errors.full_messages.join('. ')
     end
@@ -18,9 +18,9 @@ class AdTypesController < ApplicationController
 
     if Ad.where(ad_type_id: @ad_type.id).blank?
       @ad_type.destroy
-      flash[:notice] = 'Type was deleted'
+      flash[:notice] = t(:deleted, scope: [:ad_types])
     else
-      flash[:error] = 'Cannot delete this type. There are its ads.'
+      flash[:error] = t(:cannot_delete, scope: [:ad_types])
     end
 
     redirect_to(:back)
