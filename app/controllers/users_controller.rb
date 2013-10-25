@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
     flash[:notice] = t(:deleted, scope: [:users], user: @user.email)
     redirect_to '/all_users'
+
   end
 
   def show
@@ -25,5 +26,17 @@ class UsersController < ApplicationController
     end
 
     @ad_types = AdType.all
+
+  end
+
+  def update
+
+    @user = User.find_by_id(params[:id])
+    if current_user.role.admin?
+      @user.role = :admin
+    end
+    @user.save
+    redirect_to(:back)
+
   end
 end

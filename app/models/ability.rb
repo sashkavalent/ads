@@ -18,6 +18,7 @@ class Ability
     if user.role.admin?
       can :read, :all
       can :destroy, :all
+      can :update, User
       can :change_state, Ad.where(state: 'posting')
       can :manage, AdType
     end
