@@ -5,7 +5,7 @@ Ads::Application.routes.draw do
   match '/about', to: 'static_pages#about'
   match '/all_users', to: 'users#index'
   match '/profile', to: 'users#show'
-  match 'ads/change_state', to: 'ads#change_state'
+  match '/ads/change_state', to: 'ads#change_state'
 
   devise_for :users, :controllers => { :users => "users" }
 
