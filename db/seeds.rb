@@ -27,16 +27,15 @@ end
 
 email = 'admin@gmail.com'
 password  = 'programma'
-User.create!(email: email,
+User.create!({ email: email,
              password: password,
              password_confirmation: password,
              remember_me: false,
-             role: 'admin')
+             role: 'admin' }, :as => :admin)
 
 email = 'user@gmail.com'
 password  = 'programma'
 User.create!(email: email,
              password: password,
              password_confirmation: password,
-             remember_me: false,
-             role: 'user')
+             remember_me: false)
