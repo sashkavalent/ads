@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   enumerize :role, in: [:guest, :user, :admin], default: :guest
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :as => :admin
 
   default_scope order: 'users.created_at DESC'
 
