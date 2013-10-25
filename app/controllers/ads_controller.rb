@@ -20,8 +20,13 @@ class AdsController < ApplicationController
   end
 
   def index
-    @ads = Ad.where(state: 'published').paginate(:page => params[:page], :per_page => 8)
-    render '_ads'
+
+    @ads = Ad.sorted(params)
+    @ads = @ads.paginate(:page => params[:page], :per_page => 8)
+    @ad_types = AdType.all
+    @default_created_id = params[:created_id]
+    @default_ad_type_id = params[:ad_type_id]
+
   end
 
   def update

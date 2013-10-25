@@ -1,0 +1,6 @@
+<%= form_tag do %>
+  <%= select_tag(:ad_type_id, options_for_select([['All ads', 0]]) + options_from_collection_for_select(@ad_types, :id, :name, @default_ad_type_id)) %>
+  <%= select_tag(:created_id, options_for_select([['Newer first', 1], ['Older first', 2]], @default_created_id.to_i)) %><br>
+  <%= submit_tag 'sort' %>
+<% end %>
+<%= render 'ads' %>

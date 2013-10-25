@@ -1,7 +1,8 @@
 <ul class='ads'>
-  <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad, :users => @users %>
-  <%= will_paginate @ads %>
-  <% if (@ads.blank? && current_user.try(:role).try(:admin?)) %>
-    <p> No new posted ads </p>
+  <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
+  <%= will_paginate @ads, :params => { :created_id => @default_created_id, :ad_type_id => @default_ad_type_id } %>
+
+  <% if (@ads.blank?) %>
+    <p> No ad available... </p>
   <% end %>
 </ul>

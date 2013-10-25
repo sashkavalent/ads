@@ -14,7 +14,7 @@ users = User.all(limit: 6)
 5.times do
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.ads.create!(content: content,
-    ad_type_id: AdType.first.id) }
+    ad_type_id: Random.rand(3) + 1) }
 end
 
 users.each do |user|
