@@ -8,6 +8,6 @@
 <% end %>
 <% if ((current_user.try(:role).try(:admin?) && ad.posting?) || ad.drafting? || ad.rejected? || ad.archived?) %>
   <% ad.state_transitions.each do |transition| %>
-    <%= link_to transition.event, :action => 'change_state', :controller => 'ads', :id => ad, :state_event => transition.event, :method => :put %>
+    <%= link_to transition.event, { :controller => 'ads', :action => 'change_state', :id => ad, :state_event => transition.event }, :method => :put %>
   <% end %>
 <% end %>
