@@ -11,7 +11,7 @@ class Ability
       can :read, :all
       can :destroy, user.ads
       can :update, Ad, :state => 'drafting', :user_id => user.id
-      can :change_state, Ad, :state => 'drafting', :user_id => user.id
+      can :change_state, Ad, :state => ['drafting', 'rejected', 'archived'], :user_id => user.id
       can :create, Ad
     end
 
@@ -19,7 +19,7 @@ class Ability
       can :read, :all
       can :destroy, :all
       can :update, User
-      can :change_state, Ad, :state => 'posting', :user_id => user.id
+      can :change_state, Ad, :state => 'posting'
       can :manage, AdType
     end
   end

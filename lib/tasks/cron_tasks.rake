@@ -7,7 +7,13 @@ namespace :events do
     end
   end
 
-  task :test => :environment do
+  task :archive => :environment do
+    Ad.where(state: 'published').each do |ad|
+      ad.archive
+    end
+  end
+
+  task :test do
     puts "#{Time.now} hello"
   end
 end
