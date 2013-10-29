@@ -10,8 +10,8 @@ class Ability
     if user.role.user?
       can :read, :all
       can :destroy, user.ads
-      can :update, user.ads.where(state: 'drafting')
-      can :change_state, user.ads.where(state: 'drafting')
+      can :update, Ad, :state => 'drafting', :user_id => user.id
+      can :change_state, Ad, :state => 'drafting', :user_id => user.id
       can :create, Ad
     end
 
@@ -19,7 +19,7 @@ class Ability
       can :read, :all
       can :destroy, :all
       can :update, User
-      can :change_state, Ad.where(state: 'posting')
+      can :change_state, Ad, :state => 'posting', :user_id => user.id
       can :manage, AdType
     end
   end
