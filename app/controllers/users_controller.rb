@@ -7,11 +7,9 @@ class UsersController < ApplicationController
 
   def destroy
 
-    @user = User.find_by_id(params[:id])
     @user.destroy
-
     flash[:notice] = t(:deleted, scope: [:users], user: @user.email)
-    redirect_to '/all_users'
+    redirect_to users_path
 
   end
 
@@ -31,7 +29,6 @@ class UsersController < ApplicationController
 
   def update
 
-    @user = User.find_by_id(params[:id])
     if current_user.role.admin?
       @user.role = :admin
     end
