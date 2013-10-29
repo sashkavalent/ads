@@ -1,5 +1,7 @@
 <ul class='ads'>
+
   <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
+
   <%= will_paginate @ads, :params => { :created_id => @default_created_id, :ad_type_id => @default_ad_type_id } %>
 
   <% if (@ads.blank?) %>

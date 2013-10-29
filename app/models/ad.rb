@@ -9,8 +9,6 @@ class Ad < ActiveRecord::Base
   validates :content, presence: true, length: {maximum: 200}, format: { with: GlobalConstants::Content_regexp }
   validates :ad_type_id, presence: true
 
-  # default_scope order: 'ads.created_at DESC'
-
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
   state_machine :state, :initial => :drafting do
@@ -35,7 +33,7 @@ class Ad < ActiveRecord::Base
     end
 
     event :draft do
-      transition :rejected => :drafting
+      transition [:rejected, :archived] => :drafting
     end
   end
 
