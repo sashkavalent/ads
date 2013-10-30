@@ -28,6 +28,7 @@ class AdTypesController < ApplicationController
   end
 
   def index
+    @ad_type = AdType.new()
   end
 
 end

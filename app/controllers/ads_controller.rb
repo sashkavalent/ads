@@ -23,7 +23,7 @@ class AdsController < ApplicationController
 
   def index
 
-    @ads = Ad.sort(params)
+    @ads = Ad.search(params)
     @ads = @ads.paginate(:page => params[:page], :per_page => 8)
     @ad_types = AdType.all
     @default_created_id = params[:created_id]

@@ -1,7 +1,6 @@
 <%= nested_form_for @ad do |f| %>
 
   <%= f.text_area :content, placeholder: 'Compose new ad...' %><br>
-
   <%= collection_select(:ad, :ad_type_id, @ad_types, :id, :name) %>
 
   <%= f.fields_for :photos, :html => { :multipart => true} do |photo_form| %>
@@ -13,6 +12,5 @@
   <% end %>
 
   <p><%= f.link_to_add 'Add a photo', :photos %></p>
-
   <%= f.submit 'Ok', class: 'btn btn-large btn-primary' %>
 <% end %>

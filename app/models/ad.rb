@@ -48,9 +48,14 @@ class Ad < ActiveRecord::Base
     end
   end
 
-  def self.sort(params)
+  def self.search(params)
 
     @ads = Ad.where(state: 'published')
+
+    if params[:search]
+      @ads = @ads.where('lower(content) LIKE ?', "%#{params[:search].downcase}%")
+    end
+
     if params[:created_id]
 
       if params[:ad_type_id] != '0'
