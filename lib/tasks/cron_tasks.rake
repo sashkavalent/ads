@@ -9,7 +9,9 @@ namespace :events do
 
   task :archive => :environment do
     Ad.where(state: 'published').each do |ad|
-      ad.archive
+      if (Time.now - ad.published_at > 5.minutes)
+        ad.archive
+      end
     end
   end
 

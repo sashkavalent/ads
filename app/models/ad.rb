@@ -12,6 +12,17 @@ class Ad < ActiveRecord::Base
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
   state_machine :state, :initial => :drafting do
+
+    after_transition :approved => :published do |ad, transition|
+      ad.published_at = Time.now
+      ad.save
+    end
+
+    after_transition :published => :archived do |ad, transition|
+      ad.published_at = nil
+      ad.save
+    end
+
     event :post do
       transition :drafting => :posting
     end
@@ -37,7 +48,7 @@ class Ad < ActiveRecord::Base
     end
   end
 
-  def self.sorted(params)
+  def self.sort(params)
 
     @ads = Ad.where(state: 'published')
     if params[:created_id]
