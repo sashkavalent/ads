@@ -1,10 +1,12 @@
-<ul class='ads'>
+<div id='ads'>
+  <ul class='ads'>
 
-  <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
+    <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
 
-  <%= will_paginate @ads, :params => { :created_id => @default_created_id, :ad_type_id => @default_ad_type_id } %>
+    <%= will_paginate @ads, :params => { :created_id => @default_created_id, :ad_type_id => @default_ad_type_id } %>
 
-  <% if (@ads.blank?) %>
-    <p> No ad available... </p>
-  <% end %>
-</ul>
+    <% if (@ads.blank?) %>
+      <p> No ad available... </p>
+    <% end %>
+  </ul>
+</div>

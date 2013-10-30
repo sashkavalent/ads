@@ -1,8 +1,10 @@
-<%= form_for AdType.new() do |f| %>
+<%= form_for @ad_type do |f| %>
   <%= f.text_field :name, placeholder: 'Type ad type))' %>
   <%= f.submit 'Ok', class: 'btn btn-large btn-primary' %>
 <% end %>
+
 <ul class='ads'>
+
   <% @ad_types.each do |ad_type| %>
     <li>
       <%= ad_type.name %>
@@ -11,5 +13,7 @@
                           title: ad_type.name %>
     </li>
   <% end %>
+
 </ul>
+
 <%= link_to GlobalConstants::Back_link, current_user %>
