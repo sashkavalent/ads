@@ -7,11 +7,12 @@ class AdTypesController < ApplicationController
 
     if @ad_type.save
       flash[:notice] = t(:added, scope: [:ad_types])
+      params[:ad_type] = nil
     else
       flash[:error] = @ad_type.errors.full_messages.join('. ')
     end
 
-    redirect_to(:back)
+    redirect_to(:controller => :ad_types, :action => :index, :ad_type => params[:ad_type])
 
   end
 
@@ -28,7 +29,7 @@ class AdTypesController < ApplicationController
   end
 
   def index
-    @ad_type = AdType.new()
+    @ad_type = AdType.new(params[:ad_type])
   end
 
 end
