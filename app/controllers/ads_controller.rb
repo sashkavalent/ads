@@ -6,10 +6,12 @@ class AdsController < ApplicationController
     @ad = current_user.ads.build(params[:ad])
     if @ad.save
       flash[:notice] = t(:added, scope: [:ads])
+      params[:ad] = nil
     else
       flash[:error] = @ad.errors.full_messages.join('. ')
     end
-    redirect_to(:back)
+
+    redirect_to(:controller => :users, :action => :show, :id => current_user, :ad => params[:ad])
 
   end
 
@@ -35,7 +37,7 @@ class AdsController < ApplicationController
 
     @ad.attributes = params[:ad]
     @ad.save
-    redirect_to profile_path
+    redirect_to current_user
 
   end
 

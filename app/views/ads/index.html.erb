@@ -1,4 +1,4 @@
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "jquery.rails.js" %>
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
 <%= csrf_meta_tag %>
 
 <%= form_tag ads_path, :method => :get, :remote => true do %>
@@ -11,7 +11,7 @@
   <%= text_field_tag :search, params[:search], :placeholder => 'key word' %><br>
 
   <%= submit_tag :search %>
-  <%= link_to 'reset', ads_path %>
+  <%= link_to 'reset', '#',  :onclick => "reset()"%>
 <% end %>
 
 <%= render 'ads' %>
