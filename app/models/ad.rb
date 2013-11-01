@@ -50,7 +50,7 @@ class Ad < ActiveRecord::Base
 
   def self.search(params)
 
-    @ads = Ad.where(state: 'published')
+    @ads = Ad.includes(:user).includes(:ad_type).includes(:photos).where(state: 'published')
 
     if params[:search]
       @ads = @ads.where('lower(content) LIKE ?', "%#{params[:search].downcase}%")
