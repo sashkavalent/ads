@@ -9,7 +9,7 @@ namespace :events do
 
   task :archive => :environment do
     Ad.where(state: 'published').each do |ad|
-      if (Time.now - ad.published_at > 5.minutes)
+      if (Time.now - ad.published_at > 3.days)
         ad.archive
       end
     end
