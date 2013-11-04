@@ -48,31 +48,4 @@ class Ad < ActiveRecord::Base
     end
   end
 
-  def self.search(params)
-
-    @ads = Ad.includes(:user).includes(:ad_type).includes(:photos).where(state: 'published')
-
-    if params[:search]
-      @ads = @ads.where('lower(content) LIKE ?', "%#{params[:search].downcase}%")
-    end
-
-    if params[:created_id]
-
-      if params[:ad_type_id] != '0'
-        @ads = @ads.where(ad_type_id: params[:ad_type_id])
-      end
-
-      if params[:created_id] == '1'
-        @ads = @ads.order('created_at DESC')
-      elsif params[:created_id] == '2'
-        @ads = @ads.order('created_at ASC')
-      end
-
-    else
-      @ads = @ads.order('created_at DESC')
-    end
-
-    @ads
-  end
-
 end

@@ -3,7 +3,7 @@
 
     <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
 
-    <%= will_paginate @ads, :params => { :created_id => @default_created_id, :ad_type_id => @default_ad_type_id } %>
+    <%= will_paginate @ads %>
 
     <% if (@ads.blank?) %>
       <p> No ad available... </p>

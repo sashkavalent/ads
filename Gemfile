@@ -16,6 +16,8 @@ gem 'paperclip-dropbox'
 gem 'hermitage'
 gem 'childprocess', '0.3.6'
 gem 'enumerize'
+gem 'mysql2', '0.3.13'
+gem 'thinking-sphinx', '3.0.6'
 
 group :development, :test do
 	gem 'pry', '0.9.12.2'
