@@ -1,0 +1,3 @@
+production:
+  address: <%= ENV['SPHINX_ADDRESS'] %>
+  mysql41: <%= ENV['SPHINX_PORT'] %>
