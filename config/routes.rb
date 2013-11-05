@@ -1,4 +1,8 @@
 Ads::Application.routes.draw do
+  get "omniauth_callbacks/facebook"
+
+  get "omniauth_callbacks/vkontakte"
+
   root :to => 'ads#index'
 
   get '/help', to: 'static_pages#help'
@@ -9,7 +13,8 @@ Ads::Application.routes.draw do
       put 'change_state', :on => :member
   end
 
-  devise_for :users, :controllers => { :users => "users" }
+  devise_for :users, :controllers => { :users => "users",
+      :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users, only: [:index, :destroy, :show, :update]
   resources :ad_types, only: [:create, :destroy, :index]

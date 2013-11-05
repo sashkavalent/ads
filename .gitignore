@@ -16,5 +16,6 @@
 /public/assets
 /config/database.yml
 /config/development.sphinx.conf
+/config/initializers/devise.rb
 db/sphinx
 /log/*.pid
