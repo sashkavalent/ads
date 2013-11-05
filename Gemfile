@@ -21,7 +21,7 @@ gem 'thinking-sphinx', '3.0.6'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
-gem 'localtunnel'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
 	gem 'pry', '0.9.12.2'

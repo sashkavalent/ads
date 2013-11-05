@@ -15,27 +15,24 @@ class User < ActiveRecord::Base
 
   after_create :user_role
 
-  def self.find_for_facebook_oauth access_token
+  def self.find_for_oauth access_token
 
-    if user = User.where(:url => access_token.info.urls.Facebook).first
-      user
+    if access_token.provider == 'vkontakte'
+      user = User.where(:url => access_token.info.urls.Vkontakte).first
+      email = access_token.extra.raw_info.screen_name + '@vk.com'
     else
-      friendly_token = Devise.friendly_token[0,20]
-      User.create!(:provider => access_token.provider, :url => access_token.info.urls.Facebook,
-        :email => access_token.extra.raw_info.email,
-        :password => friendly_token, :password_confirmation => friendly_token)
+      user = User.where(email: access_token.info['email']).first
+      email = access_token.extra.raw_info.email
     end
 
-  end
-
-  def self.find_for_vkontakte_oauth access_token
-    if user = User.where(:url => access_token.info.urls.Vkontakte).first
+    if user
       user
     else
       friendly_token = Devise.friendly_token[0,20]
-      User.create!(:provider => access_token.provider, :url => access_token.info.urls.Vkontakte,
-        :email => access_token.extra.raw_info.screen_name+'@vk.com',
-        :password => friendly_token, :password_confirmation => friendly_token)
+      User.create!(:provider => access_token.provider, :url => access_token
+          .info.urls[access_token.provider.capitalize],
+        email: email,
+        password: friendly_token, password_confirmation: friendly_token)
     end
 
   end

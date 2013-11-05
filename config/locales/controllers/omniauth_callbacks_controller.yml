@@ -1,0 +1,3 @@
+en:
+  omniauth_callbacks:
+    authentication_error: 'Authentication error has occured.'

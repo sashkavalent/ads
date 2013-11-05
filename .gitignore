@@ -19,3 +19,4 @@
 /config/initializers/devise.rb
 db/sphinx
 /log/*.pid
+/config/app_env_variables.rb
