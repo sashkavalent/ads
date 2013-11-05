@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131030115017) do
+ActiveRecord::Schema.define(:version => 20131105114048) do
 
   create_table "ad_types", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20131030115017) do
     t.datetime "updated_at",                             :null => false
     t.string   "role"
     t.datetime "published_at"
+    t.string   "provider"
+    t.string   "url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

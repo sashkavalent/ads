@@ -18,6 +18,10 @@ gem 'childprocess', '0.3.6'
 gem 'enumerize'
 gem 'mysql2', '0.3.13'
 gem 'thinking-sphinx', '3.0.6'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+gem 'localtunnel'
 
 group :development, :test do
 	gem 'pry', '0.9.12.2'
