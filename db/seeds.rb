@@ -2,9 +2,13 @@ AdType.create!(name: 'Auto')
 AdType.create!(name: 'Real estate')
 AdType.create!(name: 'Animals')
 15.times do |n|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
   email = Faker::Internet.email
   password  = 'password'
-  User.create!(email: email,
+  User.create!(first_name: first_name,
+               last_name: last_name,
+               email: email,
                password: password,
                password_confirmation: password,
                remember_me: false)
@@ -25,17 +29,25 @@ users.each do |user|
   end
 end
 
+first_name = 'just'
+last_name = 'admin'
 email = 'admin@gmail.com'
 password  = 'programma'
-User.create!({ email: email,
-             password: password,
-             password_confirmation: password,
-             remember_me: false,
-             role: 'admin' }, :as => :admin)
+User.create!({first_name: first_name,
+              last_name: last_name,
+              email: email,
+              password: password,
+              password_confirmation: password,
+              remember_me: false,
+              role: 'admin' }, :as => :admin)
 
+first_name = 'just'
+last_name = 'user'
 email = 'user@gmail.com'
 password  = 'programma'
-User.create!(email: email,
+User.create!(first_name: first_name,
+             last_name: last_name,
+             email: email,
              password: password,
              password_confirmation: password,
              remember_me: false)

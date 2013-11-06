@@ -1,19 +1,25 @@
 <% provide(:title, 'User') %>
 <ul class='ads'>
+
   <% @users.each do |user| %>
+
     <li>
-      <%= user.email %>
+
+      <%= link_to user.name, user %>
+
       <% if ((can? :destroy, user) && (user != current_user)) %>
         <%= link_to 'delete', user, method: :delete,
-                                  data: { confirm: 'You sure?' },
-                                  title: user.email %>
+              data: { confirm: 'You sure?' }, title: user.name %>
       <% end %><br>
+
       <% if ((can? :update, user) && (user.role.user?)) %>
         <%= link_to 'to admin', {:controller => "users", :action => "update", :id => user, :role => 'admin' }, :method => :put,
-                                  data: { confirm: 'You sure?' },
-                                  title: user.email%>
+          data: { confirm: 'You sure?' }, title: user.name%>
       <% end %>
+
     </li>
+
   <% end %>
+
 </ul>
 <%= will_paginate @ads %>

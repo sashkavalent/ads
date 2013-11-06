@@ -28,8 +28,9 @@ class AdsController < ApplicationController
     ad_type_id = params['ad_type_id'].blank? ? nil : params['ad_type_id']
     order = params['created_at'] || 'created_at DESC'
     @ads = Ad.search(params['key_word'],
-          :conditions => {ad_type_id: ad_type_id, state: :published},
-          :order => order, :page => params[:page], :per_page => 8)
+      :sql => {:include => [:user, :ad_type, :photos] },
+      :conditions => {:ad_type_id => ad_type_id, :state => :published},
+      :order => order, :page => params[:page], :per_page => 8)
     @ad_types = AdType.all
 
   end

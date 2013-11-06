@@ -1,11 +1,12 @@
 <li>
   <span class='cont'><%= link_to ad.content, ad %></span><br>
-  <span class='photos'> <%= render_gallery_for ad.photos, original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
+  <span class='photos'> <%= render_gallery_for ad.photos,
+    original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
 
   <div class='user'>
     <%= ad.ad_type.name %><br>
     <%= ad.state %>
-    by <%= ad.user.email %>
+    by <%= link_to ad.user.name, ad.user %>
   </div>
 
   <%= render 'ads/links', :ad => ad %>
