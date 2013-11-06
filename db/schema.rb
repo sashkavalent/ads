@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105114048) do
+ActiveRecord::Schema.define(:version => 20131106112218) do
 
   create_table "ad_types", :force => true do |t|
     t.string   "name"
@@ -33,12 +33,8 @@ ActiveRecord::Schema.define(:version => 20131105114048) do
 
   create_table "photos", :force => true do |t|
     t.integer  "ad_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "name"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -60,9 +56,10 @@ ActiveRecord::Schema.define(:version => 20131105114048) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
-    t.datetime "published_at"
     t.string   "provider"
     t.string   "url"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

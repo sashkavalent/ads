@@ -1,11 +1,14 @@
-<% provide(:title, current_user.email) %>
-<table>
-  <td> <h3> <%= current_user.email %> </h3> </td>
-  <td> <%= link_to 'edit', edit_user_registration_path %> </td>
-</table>
+<% provide(:title, @user.name) %>
+
+  <h3> <%= @user.name %> </h3>
+  <% if @user == current_user && @user.provider == nil %>
+    <%= link_to 'edit', edit_user_registration_path %>
+  <% end %>
+
 <% if current_user.role.admin? %>
   <%= link_to 'Ad types', AdType %><br>
-<% else %>
-  <%= render 'ads/ad_form' %>
+<% elsif can? :update, @ad %>
+    <%= render 'ads/ad_form' %>
 <% end %>
+
 <%= render 'ads/ads' %>

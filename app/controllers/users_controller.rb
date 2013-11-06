@@ -15,15 +15,25 @@ class UsersController < ApplicationController
 
   def show
 
+    if params['id'] == current_user.id.to_s
 
-    if current_user.role.admin?
-      @ads = Ad.where(state: 'posting').paginate(:page => params[:page], :per_page => 5)
+      if current_user.role.admin?
+        @ads = Ad.where(state: 'posting').paginate(:page => params[:page], :per_page => 5)
+      else
+        @ads = Ad.where(user_id: params['id']).
+          paginate(:page => params[:page], :per_page => 5)
+        @ad = current_user.ads.build(params[:ad]) if user_signed_in?
+        @ad_types = AdType.all
+      end
+
     else
-      @ads = Ad.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5)
-      @ad = current_user.ads.build(params[:ad]) if user_signed_in?
+
+      @ads = Ad.where(state: 'published', user_id: params['id']).
+        paginate(:page => params[:page], :per_page => 5)
+
     end
 
-    @ad_types = AdType.all
+    @user = User.find_by_id(params['id'])
 
   end
 

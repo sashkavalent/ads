@@ -1,12 +1,11 @@
-<div id='ads'>
-  <ul class='ads'>
+<ul class='ads'>
 
-    <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
+  <script type="text/javascript">hermitage.init()</script>
+  <%= render :partial => 'ads/ad', :collection => @ads, :as => :ad %>
 
-    <%= will_paginate @ads %>
+  <%= will_paginate @ads %>
 
-    <% if (@ads.blank?) %>
-      <p> No ad available... </p>
-    <% end %>
-  </ul>
-</div>
+  <% if (@ads.blank?) %>
+    <p> No ad available... </p>
+  <% end %>
+</ul>

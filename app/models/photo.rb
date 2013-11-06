@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :file, storage: :dropbox,
     dropbox_credentials: "#{Rails.root}/config/extras/dropbox.yml",
-    styles: { medium: "300x300", thumbnail: "100x100" },
+    styles: { medium: "300x300", thumbnail: "100x" },
     dropbox_options: { path: proc { |style| "assets/ads/#{id}/#{style}/#{file_file_name}" } }
 
   validates :name, presence: true, format: { with: GlobalConstants::Content_regexp }
