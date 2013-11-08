@@ -5,6 +5,8 @@ feature 'Registration.' do
     visit '/'
     click_link 'Sign up'
 
+    fill_in 'First name', :with => 'sasha'
+    fill_in 'Last name', :with => 'kasha'
     fill_in 'Email', :with => 'user123@gmail.com'
     fill_in 'Password', :with => 'programma'
     fill_in 'Password confirmation', :with => 'programma'

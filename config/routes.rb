@@ -7,7 +7,6 @@ Ads::Application.routes.draw do
 
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
-  get '/profile', to: 'users#show'
 
   resources :ads, except: [:new, :edit] do
       put 'change_state', :on => :member
