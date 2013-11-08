@@ -9,7 +9,7 @@ feature 'Creation of new ad type.' do
 
     click_link 'Profile'
 
-    expect(page).to have_content(admin.email)
+    expect(page).to have_content(admin.name)
 
     ad_type_name = 'cucumbers'
     click_link 'Ad types'

@@ -9,7 +9,7 @@ feature 'Creation of new ad.' do
 
     click_link 'Profile'
 
-    expect(page).to have_content(user.email)
+    expect(page).to have_content(user.name)
 
     ad_content = 'Selling turnips.'
     fill_in 'ad_content', :with => ad_content

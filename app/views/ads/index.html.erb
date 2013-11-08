@@ -1,10 +1,3 @@
-<%= #javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
- %>
-<%= #javascript_include_tag :defaults
- %>
-<%= #csrf_meta_tag
-%>
-
 <%= form_tag ads_path, :method => :get, :remote => true do %>
 
   <%= select_tag(:ad_type_id, options_for_select([['All ads', '']]) +
