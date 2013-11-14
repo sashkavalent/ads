@@ -3,8 +3,8 @@
   <span class='photos'> <%= render_gallery_for ad.photos,
     original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
 
-  <div class='user'>
-    <%= ad.ad_type.name %><br>
+  <div class='info'>
+    <div class='ad_type'><%= ad.ad_type.name %></div>
     <%= ad.state %>
     by <%= link_to ad.user.name, ad.user %>
   </div>

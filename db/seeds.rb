@@ -14,21 +14,6 @@ AdType.create!(name: 'Animals')
                remember_me: false)
 end
 
-users = User.all(limit: 6)
-5.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.ads.create!(content: content,
-    ad_type_id: Random.rand(3) + 1) }
-end
-
-users.each do |user|
-  user.ads.each do |ad|
-    ad.post
-    ad.approve
-    ad.publish
-  end
-end
-
 first_name = 'just'
 last_name = 'admin'
 email = 'admin@gmail.com'
@@ -45,9 +30,32 @@ first_name = 'just'
 last_name = 'user'
 email = 'user@gmail.com'
 password  = 'programma'
-User.create!(first_name: first_name,
+user = User.create!(first_name: first_name,
              last_name: last_name,
              email: email,
              password: password,
              password_confirmation: password,
              remember_me: false)
+
+content = 'Added by seed ad.'
+ad = user.ads.create!(content: content, ad_type_id: 1)
+ad.created_at = Time.now - 2.second
+
+ad.post
+ad.approve
+ad.publish
+
+users = User.where('first_name != ?', 'just').limit(6)
+5.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.ads.create!(content: content,
+    ad_type_id: Random.rand(3) + 1) }
+end
+
+users.each do |user|
+  user.ads.each do |ad|
+    ad.post
+    ad.approve
+    ad.publish
+  end
+end
