@@ -1,12 +1,17 @@
 <%= form_tag ads_path, :method => :get, :remote => true do %>
 
-  <%= select_tag(:ad_type_id, options_for_select([['All ads', '']]) +
-    options_from_collection_for_select(@ad_types, :id, :name))
+  <%= select_tag :ad_type_id,
+      options_for_select([['All ads', '']]) +
+      options_from_collection_for_select(@ad_types, :id, :name,
+      params[:ad_type_id].to_i)
     %>
 
-  <%= select_tag(:created_at, options_for_select([['Newer first', 'created_at DESC'], ['Older first', 'created_at ASC']])) %><br>
+  <%= select_tag :created_at,
+      options_for_select([['Newer first', 'created_at DESC'],
+      ['Older first', 'created_at ASC']], params[:created_at]) %><br>
 
-  <%= text_field_tag :key_word, params[:key_word], :placeholder => 'key word' %><br>
+  <%= text_field_tag :key_word, params[:key_word],
+      :placeholder => 'key word' %><br>
 
   <%= submit_tag :search %>
   <%= link_to 'reset', '#',  :onclick => "reset()"%>

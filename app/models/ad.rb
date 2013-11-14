@@ -11,6 +11,8 @@ class Ad < ActiveRecord::Base
 
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
+  default_scope order: 'ads.created_at DESC'
+
   state_machine :state, :initial => :drafting do
 
     after_transition :approved => :published do |ad, transition|

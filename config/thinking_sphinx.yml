@@ -1,3 +1,5 @@
 production:
   address: <%= ENV['SPHINX_ADDRESS'] %>
   mysql41: <%= ENV['SPHINX_PORT'] %>
+test:
+  mysql41: 9307

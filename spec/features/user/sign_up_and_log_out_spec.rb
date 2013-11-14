@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature 'Registration.' do
+
   scenario 'User registers on the site.' do
     visit '/'
     click_link 'Sign up'
@@ -15,4 +16,5 @@ feature 'Registration.' do
     expect(page).to have_content('Welcom')
     expect(page).to have_content('Logout')
   end
+
 end
