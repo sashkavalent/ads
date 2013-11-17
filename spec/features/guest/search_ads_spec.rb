@@ -1,49 +1,55 @@
 require 'spec_helper'
 require 'support/sphinx'
+require 'database_cleaner'
+
 
 feature 'Searching and sorting ads.' do
 
-  scenario 'Guest search ads by keyword.' do
+  before do
+    DatabaseCleaner.clean
+    DatabaseCleaner.strategy = :truncation
+  end
+  # after do
+  #   DatabaseCleaner.clean_with(:transaction)
+  #   DatabaseCleaner.strategy = :truncation
+  #   DatabaseCleaner.start
+  #   DatabaseCleaner.clean
+  #   index
+  # end
 
+  let(:user) { create(:user) }
+
+  before do
+
+    2.times do
+      create(:ad_type)
+    end
+
+    5.times do
+      ad = user.ads.build(content: Faker::Lorem.words[1],
+         ad_type_id: rand(AdType.count) + 1)
+      ad.post
+      ad.approve
+      ad.publish
+    end
+
+    @ad = Ad.first
     index
-    visit '/'
-
-    expect(page).not_to have_selector('a', text: 'Added by seed ad.')
-
-    fill_in 'key_word', with: 'added by seed ad'
-    click_button 'search'
-
-    expect(page).to have_selector('a', text: 'Added by seed ad.')
 
   end
 
-  scenario 'Guest search ads by ad type.' do
+  scenario 'Guest searches ad by keyword.' do
 
     visit '/'
+    expect(page).to have_selector('a', text: @ad.content)
 
-    page.select('Auto', from: 'ad_type_id')
+    fill_in 'key_word', with: Faker::Name.first_name
     click_button 'search'
+    expect(page).not_to have_selector('a', text: @ad.content)
 
-    expect(page).to have_css('.ad_type', text: 'Auto')
-    expect(page).not_to have_css('.ad_type', text: 'Animals')
-    expect(page).not_to have_css('.ad_type', text: 'Real estate')
-
-  end
-
-  scenario 'Guest sort ads by "created at".' do
-
-    visit '/'
-
-    expect(page).not_to have_selector('a', text: 'Added by seed ad.')
-    click_link '4'
-    expect(page).to have_selector('a', text: 'Added by seed ad.')
-
-    page.select('Older first', from: 'created_at')
+    fill_in 'key_word', with: @ad.content
     click_button 'search'
-    expect(page).to have_selector('a', text: 'Added by seed ad.')
-
-    click_link '4'
-    expect(page).not_to have_selector('a', text: 'Added by seed ad.')
+    expect(page).to have_selector('a', text: @ad.content)
 
   end
 
