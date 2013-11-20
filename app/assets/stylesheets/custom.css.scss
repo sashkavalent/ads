@@ -1,11 +1,8 @@
 @import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
-	.comment {
-		padding: 0 0 15px 0;
-	}
 	.comments-header {
-		padding: 20px 0 15px 12px;
+		padding: 20px 0 15px 0px;
 		font-size: 1.4em;
 		color: $lightGray;
 	}
@@ -46,12 +43,12 @@ $grayMediumLight: #eaeaea;
 	}
 /* ads */
 
-.ads {
+.models {
   list-style: none;
   margin: 10px 0 0 0;
 
   li {
-    padding: 10px 0;
+    padding: 10px 0 10px 0;
     border-top: 1px solid #e8e8e8;
   }
 }

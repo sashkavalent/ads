@@ -5,9 +5,7 @@
     <%= link_to 'edit', edit_user_registration_path %>
   <% end %>
 
-<% if @user == current_user && (can? :manage, AdType) %>
-  <%= link_to 'Ad types', AdType %><br>
-<% elsif can? :update, @ad %>
+<% if can? :update, @ad %>
     <%= render 'ads/ad_form' %>
 <% end %>
 

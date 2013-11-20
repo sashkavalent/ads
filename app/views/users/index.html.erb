@@ -1,11 +1,11 @@
 <% provide(:title, 'User') %>
-<ul class='ads'>
+<ul class='models'>
 
   <% @users.each do |user| %>
 
     <li>
 
-      <%= link_to user.name, user %>
+      <%= link_to user.name, user %><br>
 
       <% if ((can? :destroy, user) && (user != current_user)) %>
         <%= link_to 'delete', user, method: :delete,

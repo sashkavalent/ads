@@ -1,6 +1,7 @@
-<%= nested_form_for @ad do |f| %>
+<%= simple_nested_form_for @ad do |f| %>
 
-  <%= f.text_area :content, placeholder: 'Compose new ad...' %><br>
+  <%= f.input :content, label: false,
+    placeholder: 'Compose new ad...', required: true  %>
   <%= collection_select(:ad, :ad_type_id, @ad_types, :id, :name) %>
 
   <%= f.fields_for :photos, :html => { :multipart => true} do |photo_form| %>
@@ -12,6 +13,7 @@
 
   <% end %>
 
-  <p><%= f.link_to_add 'Add photo', :photos %></p>
+  <p><%= f.link_to_add 'Add photo', :photos
+   %></p>
   <%= f.submit 'Ok', :class => 'zocial' %>
 <% end %>

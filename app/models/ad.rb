@@ -6,9 +6,8 @@ class Ad < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  validates :user_id, presence: true
+  validates :user_id, :ad_type_id, presence: true
   validates :content, presence: true, length: {maximum: 200}, format: { with: GlobalConstants::Content_regexp }
-  validates :ad_type_id, presence: true
 
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
