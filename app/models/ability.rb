@@ -8,11 +8,18 @@ class Ability
     end
 
     if user.role.user?
+
       can :read, :all
+
       can :destroy, user.ads
       can :update, Ad, :state => 'drafting', :user_id => user.id
-      can :change_state, Ad, :state => ['drafting', 'rejected', 'archived'], :user_id => user.id
+      can :change_state, Ad,
+        :state => ['drafting', 'rejected', 'archived'], :user_id => user.id
       can :create, Ad
+
+      can :manage, user.comments
+      can :create, Comment
+
     end
 
     if user.role.admin?

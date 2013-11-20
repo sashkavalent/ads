@@ -1,9 +1,26 @@
-	li {
-  	list-style-type: none;
-	}
 @import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
+	.comment {
+		padding: 0 0 15px 0;
+	}
+	.comments-header {
+		padding: 20px 0 15px 12px;
+		font-size: 1.4em;
+		color: $lightGray;
+	}
+	input[type="checkbox"] {
+		margin: 0 0 0 0;
+	}
+	form {
+		margin-top: 20px;
+	}
+	.inline {
+		display: inline
+	}
+	li {
+  	list-style-type: none;
+	}
 	.cont a {
 		color: #444444;
 	}

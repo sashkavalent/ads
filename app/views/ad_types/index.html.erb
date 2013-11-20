@@ -1,6 +1,6 @@
 <%= form_for @ad_type do |f| %>
   <%= f.text_field :name, placeholder: 'Type ad type))' %>
-  <%= f.submit 'Ok', class: 'btn btn-large btn-primary' %>
+  <%= f.submit 'Ok', :class => 'zocial' %>
 <% end %>
 
 <ul class='ads'>
@@ -10,7 +10,7 @@
       <%= ad_type.name %>
       <%= link_to 'delete', ad_type, method: :delete,
                           data: { confirm: 'You  sure?' },
-                          title: ad_type.name %>
+                          title: ad_type.name, :class => 'zocial' %>
     </li>
   <% end %>
 

@@ -1,13 +1,2 @@
-<li>
-  <span class='cont'><%= link_to ad.content, ad %></span><br>
-  <span class='photos'> <%= render_gallery_for ad.photos,
-    original: 'image_full', thumbnail: 'image_thumb', title: 'name' %> </span>
-
-  <div class='info'>
-    <div class='ad_type'><%= ad.ad_type.name %></div>
-    <%= ad.state %>
-    by <%= link_to ad.user.name, ad.user %>
-  </div>
-
-  <%= render 'ads/links', :ad => ad %>
-</li>
+<%= render 'ads/ad_without_comments_number', :ad => ad %>
+<%= render 'ads/comments_number', :ad => ad %>

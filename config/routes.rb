@@ -9,7 +9,8 @@ Ads::Application.routes.draw do
   get '/about', to: 'static_pages#about'
 
   resources :ads, except: [:new, :edit] do
-      put 'change_state', :on => :member
+    resources :comments, only: [:create, :destroy]
+    put 'change_state', :on => :member
   end
 
   devise_for :users, :controllers => { :users => "users",

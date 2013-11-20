@@ -1,6 +1,19 @@
 <% if can? :update, @ad %>
   <%= render 'ad_form', :ad => @ad %>
 <% else %>
-  <%= render 'ad', ad: @ad, users: @users, ad_types: @ad_types  %>
+  <%= render 'ad_without_comments_number',
+    ad: @ad, users: @users, ad_types: @ad_types  %>
 <% end %>
-<%= link_to GlobalConstants::Back_link, session.delete(:return_to) %>
+
+<div class='comments-header'>
+  <%= @ad.comments.count %>
+  <%= 'comment'.pluralize(@ad.comments.count) %>
+</div>
+
+<ul>
+  <%= render @ad.comments %>
+</ul>
+
+<% if can? :create, Comment %>
+  <%= render 'comments/new_form' %>
+<% end %>
