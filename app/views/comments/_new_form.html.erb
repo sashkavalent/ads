@@ -1,0 +1,5 @@
+<%= form_for [@ad, @comment] do |f| %>
+  <%= f.text_area :content, :placeholder => 'What do you think about it?' %>
+  <br>
+  <%= f.submit 'Add comment', :class => 'zocial' %>
+<% end %>

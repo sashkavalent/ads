@@ -20,6 +20,18 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <%
+    case provider
+      when :facebook
+        provider_class = 'facebook'
+      when :vkontakte
+        provider_class = 'vk'
+      when :google_oauth2
+        provider_class = 'googleplus'
+    end
+  %>
+    <%= link_to "Sign in",
+      omniauth_authorize_path(resource_name, provider),
+      :class => 'zocial ' + provider_class %>
   <% end -%>
 <% end -%>

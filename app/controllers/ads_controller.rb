@@ -11,7 +11,7 @@ class AdsController < ApplicationController
       flash[:error] = @ad.errors.full_messages.join('. ')
     end
 
-    redirect_to(:controller => :users, :action => :show, :id => current_user, :ad => params[:ad])
+    redirect_to(:back, :ad => params[:ad])
 
   end
 
@@ -30,7 +30,7 @@ class AdsController < ApplicationController
     @ads = Ad.search(params['key_word'],
       :sql => {:include => [:user, :ad_type, :photos] },
       :conditions => {:ad_type_id => ad_type_id, :state => :published},
-      :order => order, :page => params[:page], :per_page => 8)
+      :order => order, :page => params[:page], :per_page => 6)
     @ad_types = AdType.all
 
   end
@@ -44,8 +44,14 @@ class AdsController < ApplicationController
   end
 
   def show
+
     @ad_types = AdType.all
+    if can? :create, Comment
+      @comment = current_user.comments.build(params[:comment])
+      @comment.ad_id = params[:id]
+    end
     session[:return_to] ||= request.referer
+
   end
 
   def change_state

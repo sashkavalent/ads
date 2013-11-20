@@ -4,6 +4,7 @@ class Ad < ActiveRecord::Base
   belongs_to :user
   belongs_to :ad_type
   has_many :photos, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   validates :user_id, presence: true
   validates :content, presence: true, length: {maximum: 200}, format: { with: GlobalConstants::Content_regexp }

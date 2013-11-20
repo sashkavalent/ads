@@ -3,7 +3,7 @@ class AdTypesController < ApplicationController
 
   def create
 
-    @ad_type = AdType.create(params[:ad_type])
+    @ad_type = AdType.new(params[:ad_type])
 
     if @ad_type.save
       flash[:notice] = t(:added, scope: [:ad_types])
