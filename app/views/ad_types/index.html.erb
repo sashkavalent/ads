@@ -1,19 +1,17 @@
 <%= form_for @ad_type do |f| %>
-  <%= f.text_field :name, placeholder: 'Type ad type))' %>
-  <%= f.submit 'Ok', :class => 'zocial' %>
+  <%= f.text_field :name, placeholder: 'Type ad type))' %><br>
+  <%= f.submit 'Add', :class => 'zocial' %>
 <% end %>
 
-<ul class='ads'>
+<ul class='models'>
 
   <% @ad_types.each do |ad_type| %>
     <li>
-      <%= ad_type.name %>
+      <%= ad_type.name %><br>
       <%= link_to 'delete', ad_type, method: :delete,
                           data: { confirm: 'You  sure?' },
-                          title: ad_type.name, :class => 'zocial' %>
+                          title: ad_type.name %>
     </li>
   <% end %>
 
 </ul>
-
-<%= link_to GlobalConstants::Back_link, current_user %>

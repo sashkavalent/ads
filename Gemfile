@@ -22,6 +22,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
+gem 'simple_form'
 
 group :development, :test do
 	gem 'pry', '0.9.12.2'

@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password,
     :password_confirmation, :remember_me, :role, :as => :admin
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, :last_name, :email, presence: true
 
   default_scope order: 'users.created_at DESC'
 

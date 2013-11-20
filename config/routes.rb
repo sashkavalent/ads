@@ -9,9 +9,11 @@ Ads::Application.routes.draw do
   get '/about', to: 'static_pages#about'
 
   resources :ads, except: [:new, :edit] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, :only => :create
     put 'change_state', :on => :member
   end
+
+  resources :comments, :only => :destroy
 
   devise_for :users, :controllers => { :users => "users",
       :omniauth_callbacks => "users/omniauth_callbacks" }
