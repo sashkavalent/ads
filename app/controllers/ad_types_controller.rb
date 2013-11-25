@@ -1,6 +1,7 @@
 class AdTypesController < ApplicationController
   load_and_authorize_resource
 
+
   def create
 
     @ad_type = AdType.new(params[:ad_type])
@@ -12,7 +13,7 @@ class AdTypesController < ApplicationController
       flash[:error] = @ad_type.errors.full_messages.join('. ')
     end
 
-    redirect_to(:controller => :ad_types, :action => :index, :ad_type => params[:ad_type])
+    redirect_to(ad_types_path, :ad_type => params[:ad_type])
 
   end
 

@@ -1,12 +1,30 @@
 <% provide(:title, @user.name) %>
 
-  <h3> <%= @user.name %> </h3>
-  <% if @user == current_user && @user.provider == nil %>
-    <%= link_to 'edit', edit_user_registration_path %>
-  <% end %>
+<table>
+  <tr>
+    <td>
+      <h3> <%= @user.name %> </h3>
+    </td>
+    <td class='right'>
 
-<% if can? :update, @ad %>
-    <%= render 'ads/ad_form' %>
-<% end %>
+      <% if @user == current_user && @user.provider == nil %>
+        <%= link_to 'edit', edit_user_registration_path %>
+      <% end %><br>
+
+      <% if (can? :destroy, @user) && !@user.role.admin? %>
+        <%= link_to 'delete', @user, method: :delete,
+              data: { confirm: 'You sure?' }, title: @user.name %>
+      <% end %><br>
+
+      <% if ((can? :update, @user) && (@user.role.user?)) %>
+        <%= link_to 'to admin', {:controller => "users", :action => "update", :id => @user, :role => 'admin' }, :method => :put,
+          data: { confirm: 'You sure?' }, title: @user.name%>
+      <% end %><br>
+
+    </td>
+  </tr>
+</table>
+
+<%= render('ads/form', :ad => @ad) if can? :create, @ad %>
 
 <%= render 'ads/ads' %>

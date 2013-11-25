@@ -1,17 +1,1 @@
-<%= form_for @ad_type do |f| %>
-  <%= f.text_field :name, placeholder: 'Type ad type))' %><br>
-  <%= f.submit 'Add', :class => 'zocial' %>
-<% end %>
-
-<ul class='models'>
-
-  <% @ad_types.each do |ad_type| %>
-    <li>
-      <%= ad_type.name %><br>
-      <%= link_to 'delete', ad_type, method: :delete,
-                          data: { confirm: 'You  sure?' },
-                          title: ad_type.name %>
-    </li>
-  <% end %>
-
-</ul>
+<%= render 'ad_options/index', :option => @ad_type, :options => @ad_types %>

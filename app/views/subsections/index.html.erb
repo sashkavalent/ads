@@ -1,0 +1,7 @@
+<h3><%= @subsection.section.name %></h3>
+<%= render 'ad_options/title', :option => @subsection %>
+
+<%= render 'ad_options/form', :option => [@subsection.section, @subsection] %>
+
+<%= render 'ad_options/options_list', :options => @subsections %>
+<%= link_to 'back', sections_path %>

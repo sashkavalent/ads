@@ -1,0 +1,12 @@
+<ul class='models'>
+
+  <% options.each do |option| %>
+    <li>
+      <%= option.name %><br>
+      <%= link_to 'delete', option, method: :delete,
+                          data: { confirm: 'You  sure?' },
+                          title: option.name %>
+    </li>
+  <% end %>
+
+</ul>

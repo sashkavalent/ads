@@ -1,12 +1,15 @@
 class Ad < ActiveRecord::Base
-  attr_accessible :content, :photos_attributes, :ad_type_id
+  attr_accessible :content, :photos_attributes, :ad_type_id, :place_id, :subsection_id
 
   belongs_to :user
   belongs_to :ad_type
+  belongs_to :place
+  belongs_to :subsection
+
   has_many :photos, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  validates :user_id, :ad_type_id, presence: true
+  validates :user_id, :ad_type_id, :place_id, :subsection_id, presence: true
   validates :content, presence: true, length: {maximum: 200}, format: { with: GlobalConstants::Content_regexp }
 
   accepts_nested_attributes_for :photos, :allow_destroy => true

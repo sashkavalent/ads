@@ -1,0 +1,8 @@
+<div class='comments-header'>
+  <%= comments.count %>
+  <%= 'comment'.pluralize(comments.count) %>
+</div>
+
+<ul class='models'>
+  <%= render comments %>
+</ul>

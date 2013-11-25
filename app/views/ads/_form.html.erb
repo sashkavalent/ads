@@ -1,8 +1,15 @@
 <%= simple_nested_form_for @ad do |f| %>
 
   <%= f.input :content, label: false,
-    placeholder: 'Compose new ad...', required: true  %>
-  <%= collection_select(:ad, :ad_type_id, @ad_types, :id, :name) %>
+    placeholder: 'Compose new ad...', required: true, :class => 'info'  %>
+
+  <%= collection_select(:ad, :ad_type_id, @ad_types,
+    :id, :name, {}, { :class => 'selectpicker show-tick'}) %>
+  <%= collection_select(:ad, :place_id, @places,
+    :id, :name, {}, { :class => 'selectpicker show-tick'}) %><br>
+  <%= grouped_collection_select(:ad, :subsection_id, @sections, :subsections, :name,
+    :id, :name, {}, { :class => 'selectpicker show-tick', 'data-live-search' => "true"})
+   %>
 
   <%= f.fields_for :photos, :html => { :multipart => true} do |photo_form| %>
 

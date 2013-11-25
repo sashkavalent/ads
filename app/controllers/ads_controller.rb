@@ -16,11 +16,9 @@ class AdsController < ApplicationController
   end
 
   def destroy
-
     @ad.destroy
     flash[:notice] = t(:deleted, scope: [:ads])
-    redirect_to(:back)
-
+    redirect_to session.delete(:return_to)
   end
 
   def index
@@ -39,18 +37,27 @@ class AdsController < ApplicationController
 
     @ad.attributes = params[:ad]
     @ad.save
-    redirect_to current_user
+    redirect_to @ad
 
   end
 
   def show
+
+    session[:return_to] ||= request.referer
 
     @ad_types = AdType.all
     if can? :create, Comment
       @comment = current_user.comments.build(params[:comment])
       @comment.ad_id = params[:id]
     end
-    session[:return_to] ||= request.referer
+
+  end
+
+  def edit
+
+    @ad_types = AdType.all
+    @places = Place.all
+    @sections = Section.all
 
   end
 
