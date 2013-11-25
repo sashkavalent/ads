@@ -7,9 +7,15 @@
     :id, :name, {}, { :class => 'selectpicker show-tick'}) %>
   <%= collection_select(:ad, :place_id, @places,
     :id, :name, {}, { :class => 'selectpicker show-tick'}) %><br>
+
   <%= grouped_collection_select(:ad, :subsection_id, @sections, :subsections, :name,
     :id, :name, {}, { :class => 'selectpicker show-tick', 'data-live-search' => "true"})
    %>
+
+  <%= f.input :price %>
+  <%= collection_select(:ad, :currency_id, @currencies,
+    :id, :name) %>
+
 
   <%= f.fields_for :photos, :html => { :multipart => true} do |photo_form| %>
 

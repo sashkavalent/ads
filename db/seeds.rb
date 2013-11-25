@@ -1,3 +1,11 @@
+# encoding: utf-8
+
+def currencies
+  Currency.create!(name: '$')
+  Currency.create!(name: 'byr')
+  Currency.create!(name: '€')
+end
+
 def ad_types
   AdType.create!(name: 'Buy')
   AdType.create!(name: 'Sell')
@@ -75,7 +83,7 @@ end
 def ads
   user = User.find_by_email('user@gmail.com')
   content = 'Added by seed ad.'
-  ad = user.ads.create!(content: content, ad_type_id: 1, place_id: 1, subsection_id: 1)
+  ad = user.ads.create!(content: content, ad_type_id: 1, place_id: 1, subsection_id: 1, currency_id: 1, price: 100)
   ad.created_at = Time.now - 2.second
 
   ad.post
@@ -86,7 +94,9 @@ def ads
   5.times do
     content = Faker::Lorem.sentence(5)
     users.each { |user| user.ads.create!(content: content,
-      ad_type_id: Random.rand(3) + 1, place_id: Random.rand(6) + 1, subsection_id: Random.rand(9) + 1) }
+      ad_type_id: Random.rand(3) + 1, place_id: Random.rand(6) + 1,
+      subsection_id: Random.rand(9) + 1, currency_id: Random.rand(3) + 1,
+      price: Random.rand(50)*100 - 1) }
   end
 
   users.each do |user|
@@ -98,6 +108,7 @@ def ads
   end
 end
 
+currencies
 ad_types
 places
 sections

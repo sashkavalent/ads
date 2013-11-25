@@ -26,6 +26,7 @@ class UsersController < ApplicationController
         @ad_types = AdType.all
         @places = Place.all
         @sections = Section.all
+        @currencies = Currency.all
       end
 
     else

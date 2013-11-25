@@ -32,6 +32,7 @@ class Ability
       can :manage, Place
       can :manage, Section
       can :manage, Subsection
+      can :manage, Currency
     end
   end
 end

@@ -19,6 +19,7 @@ Ads::Application.routes.draw do
 
   resources :ad_types, only: [:create, :destroy, :index]
   resources :places, only: [:create, :destroy, :index]
+  resources :currencies, only: [:create, :destroy, :index]
 
   resources :sections, only: [:create, :destroy, :index] do
     resources :subsections, only: [:create, :index]

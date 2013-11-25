@@ -1,6 +1,14 @@
 @import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
+#ad_price {
+	float: left;
+	margin-top: 5px;
+}
+#ad_currency_id {
+	width: 60px;
+	margin-left: 3px;
+}
 	table {
 		width: 100%;
 	}
