@@ -22,7 +22,8 @@
                 <li><%= link_to 'Users', users_path %></li>
                 <li><%= link_to 'Ad types', AdType if can? :manage, AdType %></li>
                 <li><%= link_to 'Places', Place if can? :manage, Place %></li>
-                <li><%= link_to 'Section', Section if can? :manage, Section %></li>
+                <li><%= link_to 'Sections', Section if can? :manage, Section %></li>
+                <li><%= link_to 'Currencies', Currency if can? :manage, Currency %></li>
               </ul>
 
             </li>

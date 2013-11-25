@@ -15,10 +15,12 @@ feature 'Searching and sorting ads.' do
     create(:place)
     create(:section)
     create(:subsection)
+    create(:currency)
 
     5.times do
       ad = user.ads.build(content: Faker::Lorem.words[1],
-         ad_type_id: rand(AdType.count) + 1, place_id: 1, subsection_id: 1)
+        ad_type_id: rand(AdType.count) + 1, place_id: 1,
+        subsection_id: 1, currency_id: 1)
       ad.post
       ad.approve
       ad.publish

@@ -10,6 +10,7 @@ feature 'Creation of new ad.', :js => true do
     place = create(:place)
     section = create(:section)
     subsection = create(:subsection)
+    currency = create(:currency)
 
     user = create(:user)
     valid_signin user
@@ -19,10 +20,12 @@ feature 'Creation of new ad.', :js => true do
     expect(page).to have_content(user.name)
     ad_content = 'Selling turnips.'
     fill_in 'ad_content', :with => ad_content
+    fill_in 'ad_price', :with => '100'
 
     select ad_type.name, :from => 'ad_ad_type_id'
     select place.name, :from => 'ad_place_id'
     select subsection.name, :from => 'ad_subsection_id'
+    select currency.name, :from => 'ad_currency_id'
 
     2.times do |i|
 

@@ -4,7 +4,7 @@ describe Ad do
 
   let(:user) { FactoryGirl.create(:user) }
   before { @ad = user.ads.build(content: 'Sell a House', ad_type_id: 1,
-    place_id: 1, subsection_id: 1) }
+    place_id: 1, subsection_id: 1, currency_id: 1) }
 
   subject { @ad }
 

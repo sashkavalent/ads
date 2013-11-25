@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121192452) do
+ActiveRecord::Schema.define(:version => 20131125164527) do
 
   create_table "ad_types", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20131121192452) do
     t.datetime "published_at"
     t.integer  "place_id"
     t.integer  "subsection_id"
+    t.integer  "price"
+    t.integer  "currency_id"
   end
 
   add_index "ads", ["user_id", "created_at"], :name => "index_ads_on_user_id_and_created_at"
@@ -39,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20131121192452) do
     t.datetime "updated_at", :null => false
     t.integer  "ad_id"
     t.integer  "user_id"
+  end
+
+  create_table "currencies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
