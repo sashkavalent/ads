@@ -11,18 +11,19 @@ feature 'Searching and sorting ads.' do
     DatabaseCleaner.clean
     DatabaseCleaner.strategy = :truncation
 
-    2.times do
-      create(:ad_type)
-    end
+    create(:ad_type)
+    create(:place)
+    create(:section)
+    create(:subsection)
 
     5.times do
       ad = user.ads.build(content: Faker::Lorem.words[1],
-         ad_type_id: rand(AdType.count) + 1)
+         ad_type_id: rand(AdType.count) + 1, place_id: 1, subsection_id: 1)
       ad.post
       ad.approve
       ad.publish
+      ad.save
     end
-
     @ad = Ad.first
     index
 
@@ -31,6 +32,7 @@ feature 'Searching and sorting ads.' do
   scenario 'Guest searches ad by keyword.' do
 
     visit '/'
+
     expect(page).to have_selector('a', text: @ad.content)
 
     fill_in 'key_word', with: Faker::Name.first_name

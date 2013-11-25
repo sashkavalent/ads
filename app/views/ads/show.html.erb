@@ -1,18 +1,16 @@
-<% if can? :update, @ad %>
-  <%= render 'ad_form', :ad => @ad %>
-<% else %>
-  <%= render 'ad_without_comments_number',
-    ad: @ad, users: @users, ad_types: @ad_types  %>
-<% end %>
+<table>
+  <tr>
+    <td>
+      <%= render 'ad_main', :ad => @ad %>
+    </td>
+    <td class='right'>
+      <%= render 'ads/links', :ad => @ad %>
+    </td>
+  </tr>
+</table>
 
-<div class='comments-header'>
-  <%= @ad.comments.count %>
-  <%= 'comment'.pluralize(@ad.comments.count) %>
-</div>
 
-<ul class='models'>
-  <%= render @ad.comments %>
-</ul>
+<%= render 'comments/comments', :comments => @ad.comments %>
 
 <% if can? :create, Comment %>
   <%= render 'comments/new_form' %>

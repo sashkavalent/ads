@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def destroy
 
     @user.destroy
-    flash[:notice] = t(:deleted, scope: [:users], user: @user.email)
+    flash[:notice] = t(:deleted, scope: [:users], user: @user.name)
     redirect_to users_path
 
   end
@@ -24,6 +24,8 @@ class UsersController < ApplicationController
           paginate(:page => params[:page], :per_page => 5)
         @ad = current_user.ads.build(params[:ad]) if user_signed_in?
         @ad_types = AdType.all
+        @places = Place.all
+        @sections = Section.all
       end
 
     else

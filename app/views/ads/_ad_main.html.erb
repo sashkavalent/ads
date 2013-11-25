@@ -5,11 +5,11 @@
 
   <div class='info'>
 
-    <div class='ad_type'><%= ad.ad_type.name %></div>
+    <div class='ad_type'><%= ad.ad_type.name %> | <%= ad.place.name %> |
+      <%= ad.subsection.section.name %> - <%= ad.subsection.name %> </div>
     <%= ad.state %>
     by <%= link_to ad.user.name, ad.user %><br>
 
   </div>
 
-  <%= render 'ads/links', :ad => ad %>
 </li>

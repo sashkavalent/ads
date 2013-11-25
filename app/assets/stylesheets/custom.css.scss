@@ -1,6 +1,12 @@
 @import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
+	table {
+		width: 100%;
+	}
+	td.right {
+		text-align: right;
+	}
 	.comments-header {
 		padding: 20px 0 15px 0px;
 		font-size: 1.4em;

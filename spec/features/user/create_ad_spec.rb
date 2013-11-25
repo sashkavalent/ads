@@ -7,6 +7,10 @@ feature 'Creation of new ad.', :js => true do
   scenario 'User creates ad with photos.' do
 
     ad_type = create(:ad_type)
+    place = create(:place)
+    section = create(:section)
+    subsection = create(:subsection)
+
     user = create(:user)
     valid_signin user
 
@@ -15,7 +19,10 @@ feature 'Creation of new ad.', :js => true do
     expect(page).to have_content(user.name)
     ad_content = 'Selling turnips.'
     fill_in 'ad_content', :with => ad_content
+
     select ad_type.name, :from => 'ad_ad_type_id'
+    select place.name, :from => 'ad_place_id'
+    select subsection.name, :from => 'ad_subsection_id'
 
     2.times do |i|
 

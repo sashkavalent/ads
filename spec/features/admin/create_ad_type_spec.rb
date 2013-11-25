@@ -7,14 +7,15 @@ feature 'Creation of new ad type.' do
 
   scenario 'Admin creates ad type.' do
 
-    click_link 'Profile'
+    click_link 'Management'
+    click_link 'Main'
 
     expect(page).to have_content(admin.name)
 
     ad_type_name = 'cucumbers'
     click_link 'Ad types'
     fill_in 'ad_type_name', :with => ad_type_name
-    click_button 'Ok'
+    click_button 'Add'
 
     expect(page).to have_content('added')
     expect(page).to have_content(ad_type_name)

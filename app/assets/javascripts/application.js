@@ -13,6 +13,9 @@
 //= require jquery
 //= require hermitage
 //= require jquery_ujs
-//= require jquery_nested_form
 //= require bootstrap
+//= require bootstrap-select
 //= require_tree .
+$( document ).ready(function() {
+  $('.selectpicker').selectpicker();
+});

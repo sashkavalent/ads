@@ -9,7 +9,8 @@ class Ability
 
     if user.role.user?
 
-      can :read, :all
+      can :read, Ad
+      can :show, User
 
       can :destroy, user.ads
       can :update, Ad, :state => 'drafting', :user_id => user.id
@@ -28,6 +29,9 @@ class Ability
       can :update, User
       can :change_state, Ad, :state => 'posting'
       can :manage, AdType
+      can :manage, Place
+      can :manage, Section
+      can :manage, Subsection
     end
   end
 end
