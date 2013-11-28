@@ -8,6 +8,9 @@
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'Help', help_path %></li>
 
+          <% if current_user.try(:role).try(:user?) %>
+            <li><%= link_to 'Announcements', announcements_path %></li>
+          <% end %>
           <% if current_user.try(:role).try(:admin?) %>
             <li class="dropdown">
 

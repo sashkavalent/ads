@@ -13,7 +13,7 @@ class SubsectionsController < ApplicationController
       flash[:error] = @subsection.errors.full_messages.join('. ')
     end
 
-    redirect_to(sections_path, :subsection => params[:subsection])
+    redirect_to sections_path
 
   end
 

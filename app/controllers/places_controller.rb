@@ -12,8 +12,7 @@ class PlacesController < ApplicationController
       flash[:error] = @place.errors.full_messages.join('. ')
     end
 
-    redirect_to(places_path, :place => params[:place])
-
+    redirect_to places_path
   end
 
   def destroy

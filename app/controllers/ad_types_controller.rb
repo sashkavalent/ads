@@ -13,7 +13,7 @@ class AdTypesController < ApplicationController
       flash[:error] = @ad_type.errors.full_messages.join('. ')
     end
 
-    redirect_to(ad_types_path, :ad_type => params[:ad_type])
+    redirect_to ad_types_path(:ad_type => params[:ad_type])
 
   end
 

@@ -2,3 +2,4 @@ en:
   comments:
     added: 'Comment was added.'
     deleted: 'Comment was deleted.'
+    commented: 'commented'

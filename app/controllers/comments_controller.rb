@@ -3,15 +3,21 @@ class CommentsController < ApplicationController
 
   def create
 
-    @comment = current_user.comments.build(params[:comment])
-    @comment.ad_id = params[:ad_id]
-    if @comment.save
+    comment = current_user.comments.build(params[:comment])
+    comment.ad_id = params[:ad_id]
+
+    ad = Ad.find_by_id(params[:ad_id])
+    ann = ad.user.announcements.build(ad_id: params[:ad_id],
+      content: t(:ad_was, scope: [:ads]) +
+      t(:commented, scope: [:comments]))
+
+    if comment.save && ann.save
       flash[:notice] = t(:added, scope: [:comments])
       params[:comment] = nil
     else
       flash[:error] = @comment.errors.full_messages.join('. ')
     end
-    redirect_to(:back, :comment => params[:comment])
+    redirect_to :back
 
   end
 

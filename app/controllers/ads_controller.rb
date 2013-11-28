@@ -11,7 +11,7 @@ class AdsController < ApplicationController
       flash[:error] = @ad.errors.full_messages.join('. ')
     end
 
-    redirect_to(:back, :ad => params[:ad])
+    redirect_to user_path(current_user, :ad => params[:ad])
 
   end
 
