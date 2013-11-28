@@ -9,6 +9,7 @@ class Ad < ActiveRecord::Base
 
   has_many :photos, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :announcements, :dependent => :destroy
 
   validates :user_id, :ad_type_id, :place_id, :subsection_id,
     :currency_id, presence: true
@@ -28,6 +29,15 @@ class Ad < ActiveRecord::Base
     after_transition :published => :archived do |ad, transition|
       ad.published_at = nil
       ad.save
+      new_announcement(ad, transition)
+    end
+
+    after_transition :posting => any do |ad, transition|
+      new_announcement(ad, transition)
+    end
+
+    after_transition any => [:published, :archived] do |ad, transition|
+      new_announcement(ad, transition)
     end
 
     event :post do
@@ -52,6 +62,11 @@ class Ad < ActiveRecord::Base
 
     event :draft do
       transition [:rejected, :archived] => :drafting
+    end
+
+    def new_announcement(ad, transition)
+      an = ad.user.announcements.build(ad_id: ad.id, content: I18n.translate(:ad_was, scope: [:ads]) + transition.to);
+      an.save
     end
   end
 

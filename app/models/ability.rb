@@ -20,6 +20,9 @@ class Ability
 
       can :manage, user.comments
       can :create, Comment
+      can :destroy, user.announcements
+      can :read, Announcement
+      can :clear, Announcement
 
     end
 

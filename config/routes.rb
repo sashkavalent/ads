@@ -26,4 +26,8 @@ Ads::Application.routes.draw do
   end
   resources :subsections, only: [:destroy]
 
+  resources :announcements, only: [:index, :destroy] do
+    delete 'clear', :on => :collection
+  end
+
 end

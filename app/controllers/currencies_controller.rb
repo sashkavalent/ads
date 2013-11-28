@@ -12,7 +12,7 @@ class CurrenciesController < ApplicationController
       flash[:error] = @currency.errors.full_messages.join('. ')
     end
 
-    redirect_to(currencies_path, :currency => params[:currency])
+    redirect_to currencies_path
 
   end
 
