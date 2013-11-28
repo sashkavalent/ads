@@ -1,1 +1,1 @@
-Sample application for TwinSlash
+Web application that provides creation and publication of ads. There is also smart search by sphinx, authentication via social networks, ability to add and view photos, admin interface and other interesting things. I used popular gems for authentication, authorization, frontend development. Project was deployed on Heroku http://adstwinslash.herokuapp.com/.
