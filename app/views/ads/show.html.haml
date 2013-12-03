@@ -1,0 +1,9 @@
+%table
+  %tr
+    %td
+      = render 'ad_main', :ad => @ad
+    %td.right
+      = render 'ads/links', :ad => @ad
+= render 'comments/comments', :comments => @ad.comments
+- if can? :create, Comment
+  = render 'comments/new_form'

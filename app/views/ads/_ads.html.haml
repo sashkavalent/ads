@@ -1,0 +1,5 @@
+%ul.models
+  = render :partial => 'ads/ad', :collection => @ads, :as => :ad
+  = will_paginate @ads
+  - if (@ads.blank?)
+    %p No ad available...
