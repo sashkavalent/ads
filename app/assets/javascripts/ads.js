@@ -1,3 +1,3 @@
 $( document ).ajaxComplete(function() {
-hermitage.init();
+  hermitage.init();
 });
