@@ -65,7 +65,8 @@ class Ad < ActiveRecord::Base
     end
 
     def new_announcement(ad, transition)
-      an = ad.user.announcements.build(ad_id: ad.id, content: I18n.translate(:ad_was, scope: [:ads]) + transition.to);
+      an = ad.user.announcements.build(ad_id: ad.id,
+        content: I18n.translate(:was, scope: [:ads]) + transition.to);
       an.save
     end
   end
