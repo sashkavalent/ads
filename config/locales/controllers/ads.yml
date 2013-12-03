@@ -3,4 +3,4 @@ en:
     added: 'Ad was added'
     deleted: 'Ad was deleted'
     status_changed: 'Status of ad was changed'
-    ad_was: 'ad was '
+    was: 'was '

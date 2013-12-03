@@ -1,8 +1,14 @@
 - if @announcements.blank?
   %div No new announcement...
 - else
+
+  .comments-header
+    = @announcements.count
+    = 'announcement'.pluralize(@announcements.count)
+
   = link_to 'clear all', clear_announcements_path,         |
     :method => :delete, data: { confirm: 'Are you shure?'} |
+
   %ul.models
     - @announcements.map do |an|
       %li
