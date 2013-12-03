@@ -1,0 +1,18 @@
+%li
+  %span.cont= link_to ad.content, ad
+  %br/
+  %span.photos
+    = render_gallery_for ad.photos,                                   |
+      original: 'image_full', thumbnail: 'image_thumb', title: 'name' |
+  .info
+    .ad_type
+      = ad.ad_type.name
+      | #{ad.place.name}
+      | #{ad.subsection.section.name}
+      \- #{ad.subsection.name}
+    = ad.state
+    by #{link_to ad.user.name, ad.user}
+    %br/
+  - if ad.price
+    = ad.price
+    = ad.currency.name

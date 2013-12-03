@@ -1,0 +1,9 @@
+%li.comment
+  %span.cont= comment.content
+  %br/
+  .info
+    Added by
+    \#{link_to comment.user.name, comment.user}
+    \#{time_ago_in_words(comment.created_at)}
+    ago
+  = link_to 'delete', comment, :method => :delete, data: { confirm: 'Are you sure?' }

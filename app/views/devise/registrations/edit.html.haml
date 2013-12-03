@@ -1,0 +1,23 @@
+%h2
+  Edit #{resource_name.to_s.humanize}
+%p
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = f.input :first_name, :autofocus => true
+    = f.input :last_name
+    = f.input :email
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %p
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.input :password, :label => 'Password (if you want to change it)', :autocomplete => "off"
+    = f.input :password_confirmation
+    = f.input :current_password,                         |
+      :label => 'Current password (to confirm changes)', |
+      :required => true                                  |
+%p= f.submit "Update", :class => 'zocial'
+%p
+  %p
+    %label Unhappy?
+    = button_to "Cancel my account", registration_path(resource_name), |
+      :data => { :confirm => "Are you sure?" },                        |
+      :method => :delete, :class => 'zocial'                           |
+  = link_to "Back", :back

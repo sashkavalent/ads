@@ -1,0 +1,5 @@
+.comments-header
+  = comments.count
+  = 'comment'.pluralize(comments.count)
+%ul.models
+  = render comments

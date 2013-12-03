@@ -97,6 +97,13 @@ GEM
       guard (>= 1.1)
       spork (>= 0.8.4)
       sys-proctable
+    haml (4.0.4)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hashie (2.0.5)
     hermitage (0.0.6)
       coffee-rails
@@ -273,6 +280,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
+  haml-rails
   hermitage
   jquery-rails (= 2.0.2)
   libnotify (= 0.5.9)

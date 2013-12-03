@@ -1,0 +1,13 @@
+- if can? :destroy, ad
+  = link_to 'delete', ad, method: :delete, |
+    data: { confirm: 'You  sure?' },       |
+    title: ad.content                      |
+  %br/
+- if ((can? :update, ad) && ad.drafting?)
+  = link_to 'edit', edit_ad_path(ad)
+  %br/
+- if can? :change_state, ad
+  - ad.state_transitions.each do |transition|
+    = link_to transition.event, { :controller => 'ads', :action => 'change_state',
+      :id => ad, :state_event => transition.event }, :method => :put
+    %br/
