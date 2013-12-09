@@ -31,6 +31,7 @@ group :development, :test do
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
   gem 'database_cleaner'
+  gem 'railroady'
 end
 
 group :assets do

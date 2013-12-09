@@ -2,6 +2,7 @@
   %tr
     %td
       = render 'ad_main', :ad => @ad
+      = render 'keywords', :keywords => @ad.keywords
     %td.right
       = render 'ads/links', :ad => @ad
 = render 'comments/comments', :comments => @ad.comments
