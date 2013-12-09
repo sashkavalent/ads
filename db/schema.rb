@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127184022) do
+ActiveRecord::Schema.define(:version => 20131205100023) do
 
   create_table "ad_types", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(:version => 20131127184022) do
 
   add_index "ads", ["user_id", "created_at"], :name => "index_ads_on_user_id_and_created_at"
 
+  create_table "ads_keywords", :id => false, :force => true do |t|
+    t.integer "ad_id"
+    t.integer "keyword_id"
+  end
+
   create_table "announcements", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -52,6 +57,12 @@ ActiveRecord::Schema.define(:version => 20131127184022) do
   end
 
   create_table "currencies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "keywords", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

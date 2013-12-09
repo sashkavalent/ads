@@ -1,0 +1,8 @@
+.info
+  Keywords:
+  %ul
+    - if !keywords.blank?
+      - keywords.each do |keyword|
+        %li= keyword.name
+    - else
+      none

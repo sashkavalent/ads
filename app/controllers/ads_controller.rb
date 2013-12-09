@@ -3,7 +3,9 @@ class AdsController < ApplicationController
 
   def create
 
-    @ad = current_user.ads.build(params[:ad])
+    @ad.keywords = get_keywords_from_params
+    current_user.ads << @ad
+
     if @ad.save
       flash[:notice] = t(:added, scope: [:ads])
       params[:ad] = nil
@@ -35,6 +37,7 @@ class AdsController < ApplicationController
 
   def update
 
+    @ad.keywords = get_keywords_from_params
     @ad.attributes = params[:ad]
     @ad.save
     redirect_to @ad
@@ -58,6 +61,7 @@ class AdsController < ApplicationController
     @ad_types = AdType.all
     @places = Place.all
     @sections = Section.all
+    @currencies = Currency.all
 
   end
 
@@ -69,5 +73,15 @@ class AdsController < ApplicationController
     redirect_to(:back)
 
   end
+
+  private
+
+  def get_keywords_from_params
+
+    params['keywords'].split(/[,;#.-] */).
+      map { |keyword| Keyword.find_or_create_by_name(keyword) }
+
+  end
+
 
 end

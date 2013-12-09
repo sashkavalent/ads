@@ -10,6 +10,7 @@ class Ad < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :announcements, :dependent => :destroy
+  has_and_belongs_to_many :keywords
 
   validates :user_id, :ad_type_id, :place_id, :subsection_id,
     :currency_id, presence: true
