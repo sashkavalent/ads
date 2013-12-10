@@ -1,4 +1,7 @@
 - if can? :destroy, ad
+  - if ad.published?
+    = link_to '+3 days (5 coins)', { :controller => :ads, :action => :add_days }, :method => :put
+  %br
   = link_to 'delete', ad, method: :delete, |
     data: { confirm: 'You  sure?' },       |
     title: ad.content                      |

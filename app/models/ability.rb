@@ -17,12 +17,14 @@ class Ability
       can :change_state, Ad,
         :state => ['drafting', 'rejected', 'archived'], :user_id => user.id
       can :create, Ad
+      can :add_days, Ad, :user_id => user.id
 
       can :manage, user.comments
       can :create, Comment
       can :destroy, user.announcements
       can :read, Announcement
       can :clear, Announcement
+      can :create, Payment
 
     end
 
@@ -36,6 +38,8 @@ class Ability
       can :manage, Section
       can :manage, Subsection
       can :manage, Currency
+      can :manage, HashKey
+      can :manage, Payment
     end
   end
 end

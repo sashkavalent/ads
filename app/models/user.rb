@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :ads, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_one :wallet, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
 
   default_scope order: 'users.created_at DESC'
 
-  after_create :user_role
+  after_create :user_role, :create_wallet
 
   def name
     first_name + ' ' + last_name
@@ -52,6 +53,10 @@ class User < ActiveRecord::Base
     def user_role
       self.role = 'user' if self.role == 'guest'
       self.save
+    end
+
+    def create_wallet
+      self.wallet = Wallet.new(balance: 0)
     end
 
 end

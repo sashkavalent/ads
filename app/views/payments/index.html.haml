@@ -1,0 +1,9 @@
+%ul.models
+  - @payments.all.each do |p|
+    %li
+      = p.wallet.user.name
+      |
+      = p.amount
+      coins
+      |
+      = p.created_at

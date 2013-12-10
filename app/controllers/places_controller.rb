@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
     @place = Place.new(params[:place])
 
     if @place.save
-      flash[:notice] = t(:added, scope: [:places])
+      flash[:notice] = 'Place was added.'
       params[:place] = nil
     else
       flash[:error] = @place.errors.full_messages.join('. ')

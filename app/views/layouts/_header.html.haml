@@ -21,4 +21,6 @@
                 %li= link_to 'Places', Place if can? :manage, Place
                 %li= link_to 'Sections', Section if can? :manage, Section
                 %li= link_to 'Currencies', Currency if can? :manage, Currency
+                %li= link_to 'Payments', payments_path
+                %li= link_to '10 new keys', hash_keys_path, :method => :post
           = render 'layouts/login_items'

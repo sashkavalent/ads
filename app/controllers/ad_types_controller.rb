@@ -7,7 +7,7 @@ class AdTypesController < ApplicationController
     @ad_type = AdType.new(params[:ad_type])
 
     if @ad_type.save
-      flash[:notice] = t(:added, scope: [:ad_types])
+      flash[:notice] =  'Ad type was added.'
       params[:ad_type] = nil
     else
       flash[:error] = @ad_type.errors.full_messages.join('. ')

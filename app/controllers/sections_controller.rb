@@ -6,7 +6,7 @@ class SectionsController < ApplicationController
     @section = Section.new(params[:section])
 
     if @section.save
-      flash[:notice] = t(:added, scope: [:sections])
+      flash[:notice] = 'Section was added.'
       params[:section] = nil
     else
       flash[:error] = @section.errors.full_messages.join('. ')

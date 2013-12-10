@@ -8,6 +8,7 @@ Ads::Application.routes.draw do
   resources :ads, except: :new do
     resources :comments, :only => :create
     put 'change_state', :on => :member
+    put 'add_days', :on => :member
   end
 
   resources :comments, :only => :destroy
@@ -29,5 +30,8 @@ Ads::Application.routes.draw do
   resources :announcements, only: [:index, :destroy] do
     delete 'clear', :on => :collection
   end
+
+  resources :hash_keys, only: [:create]
+  resources :payments, only: [:create, :new, :index]
 
 end

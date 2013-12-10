@@ -22,31 +22,14 @@ ActiveRecord::Schema.define(:version => 20131205100023) do
   create_table "ads", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "state"
     t.integer  "ad_type_id"
     t.datetime "published_at"
-    t.integer  "place_id"
-    t.integer  "subsection_id"
-    t.integer  "price"
-    t.integer  "currency_id"
   end
 
   add_index "ads", ["user_id", "created_at"], :name => "index_ads_on_user_id_and_created_at"
-
-  create_table "ads_keywords", :id => false, :force => true do |t|
-    t.integer "ad_id"
-    t.integer "keyword_id"
-  end
-
-  create_table "announcements", :force => true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "ad_id"
-  end
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -54,18 +37,6 @@ ActiveRecord::Schema.define(:version => 20131205100023) do
     t.datetime "updated_at", :null => false
     t.integer  "ad_id"
     t.integer  "user_id"
-  end
-
-  create_table "currencies", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "keywords", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
@@ -77,25 +48,6 @@ ActiveRecord::Schema.define(:version => 20131205100023) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-  end
-
-  create_table "places", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sections", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "subsections", :force => true do |t|
-    t.string   "name"
-    t.integer  "section_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

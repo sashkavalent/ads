@@ -1,10 +1,16 @@
 - provide(:title, @user.name)
 
+
 %table
   %tr
     %td
       %h3
         = @user.name
+      %br
+      - if @user == current_user
+        Your balance:
+        = current_user.wallet.balance
+        %br= link_to 'add', new_payment_path
     %td.right
 
       - if @user == current_user && @user.provider == nil

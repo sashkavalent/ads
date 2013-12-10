@@ -1,0 +1,4 @@
+= form_for @payment do |f|
+  = label_tag 'Enter hash key:'
+  = text_field_tag :hash_key
+  %p= f.submit 'pay', :class => 'zocial'

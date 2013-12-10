@@ -74,6 +74,26 @@ class AdsController < ApplicationController
 
   end
 
+  def add_days
+
+    if current_user.wallet.balance >= Payment.coin_for_days_number
+
+      @ad.published_at += Payment.day_number.day
+      @ad.save
+      current_user.wallet.balance -= Payment.coin_for_days_number
+      current_user.wallet.save
+      flash[:notice] = 'Operation was completed.'
+      Payment.create(wallet_id: current_user.wallet.id,
+        amount: -Payment.coin_for_days_number)
+
+    else
+      flash[:error] = 'Not enough coins.'
+    end
+
+    redirect_to :back
+
+  end
+
   private
 
   def get_keywords_from_params

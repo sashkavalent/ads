@@ -7,7 +7,7 @@ class SubsectionsController < ApplicationController
     @subsection.section_id = params[:section_id]
 
     if @subsection.save
-      flash[:notice] = t(:added, scope: [:sections])
+      flash[:notice] = 'Subsection was added.'
       params[:subsection] = nil
     else
       flash[:error] = @subsection.errors.full_messages.join('. ')

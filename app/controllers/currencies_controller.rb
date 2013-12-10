@@ -6,7 +6,7 @@ class CurrenciesController < ApplicationController
     @currency = Currency.new(params[:currency])
 
     if @currency.save
-      flash[:notice] = t(:added, scope: [:currencies])
+      flash[:notice] = "Currency was added."
       params[:currency] = nil
     else
       flash[:error] = @currency.errors.full_messages.join('. ')
