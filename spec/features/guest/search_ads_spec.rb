@@ -37,7 +37,7 @@ feature 'Searching and sorting ads.' do
 
     expect(page).to have_selector('a', text: @ad.content)
 
-    fill_in 'key_word', with: Faker::Name.first_name
+    fill_in 'key_word', with: Faker::Name.first_name + '123'
     click_button 'search'
     expect(page).not_to have_selector('a', text: @ad.content)
 

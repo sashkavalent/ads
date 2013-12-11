@@ -200,6 +200,8 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     riddle (1.5.9)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
@@ -298,6 +300,7 @@ DEPENDENCIES
   railroady
   rails (= 3.2.13)
   rb-inotify (~> 0.9)
+  responders
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   simple_form

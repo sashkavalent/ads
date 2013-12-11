@@ -17,7 +17,7 @@ feature 'Creation of new ad type.' do
     fill_in 'ad_type_name', :with => ad_type_name
     click_button 'Add'
 
-    expect(page).to have_content('added')
+    expect(page).to have_content('created')
     expect(page).to have_content(ad_type_name)
   end
 

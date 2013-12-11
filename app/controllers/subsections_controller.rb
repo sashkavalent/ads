@@ -2,36 +2,21 @@ class SubsectionsController < ApplicationController
   load_and_authorize_resource
 
   def create
-
-    @subsection = Subsection.new(params[:subsection])
     @subsection.section_id = params[:section_id]
-
-    if @subsection.save
-      flash[:notice] = t(:added, scope: [:sections])
-      params[:subsection] = nil
-    else
-      flash[:error] = @subsection.errors.full_messages.join('. ')
-    end
-
-    redirect_to sections_path
-
+    @subsection.save
+    @subsections = Subsection.where(section_id: params[:section_id])
+    respond_with(@subsection.section, @subsection,
+      :location => :new_section_subsection)
   end
 
   def destroy
-
-    if Ad.where(subsection_id: @subsection.id).blank?
-      @subsection.destroy
-      flash[:notice] = t(:deleted, scope: [:sections])
-    else
-      flash[:error] = t(:cannot_delete, scope: [:sections])
-    end
-
-    redirect_to(:back)
+    @subsection.destroy
+    respond_with(@subsection.section, @subsection,
+      :location => new_section_subsection_path(@subsection.section))
   end
 
-  def index
+  def new
     @subsections = Subsection.where(section_id: params[:section_id])
-    @subsection = Subsection.new(params[:subsection])
     @subsection.section_id = params[:section_id]
   end
 

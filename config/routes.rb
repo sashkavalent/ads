@@ -5,7 +5,7 @@ Ads::Application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
 
-  resources :ads, except: :new do
+  resources :ads do
     resources :comments, :only => :create
     put 'change_state', :on => :member
   end
@@ -17,12 +17,12 @@ Ads::Application.routes.draw do
 
   resources :users, only: [:index, :destroy, :show, :update]
 
-  resources :ad_types, only: [:create, :destroy, :index]
-  resources :places, only: [:create, :destroy, :index]
-  resources :currencies, only: [:create, :destroy, :index]
+  resources :ad_types, only: [:create, :destroy, :new]
+  resources :places, only: [:create, :destroy, :new]
+  resources :currencies, only: [:create, :destroy, :new]
 
-  resources :sections, only: [:create, :destroy, :index] do
-    resources :subsections, only: [:create, :index]
+  resources :sections, only: [:create, :destroy, :new] do
+    resources :subsections, only: [:create, :new]
   end
   resources :subsections, only: [:destroy]
 

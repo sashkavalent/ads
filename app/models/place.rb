@@ -1,5 +1,10 @@
 class Place < ActiveRecord::Base
-  has_many :ads
+  include Option
+
   attr_accessible :name
-  validates :name, presence: true
+  has_many :ads
+  validates :name, presence: true,
+    format: { with: GlobalConstants::Content_regexp}, length: {maximum: 20}
+  before_destroy :before_destroy
+
 end

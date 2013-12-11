@@ -19,6 +19,8 @@ feature 'Creation of new ad.', :js => true do
 
     expect(page).to have_content(user.name)
     ad_content = 'Selling turnips.'
+
+    click_on 'create new ad'
     fill_in 'ad_content', :with => ad_content
     fill_in 'ad_price', :with => '100'
 
@@ -37,9 +39,10 @@ feature 'Creation of new ad.', :js => true do
     end
 
     click_button 'Ok'
+    expect(page).to have_content('created')
 
+    click_on 'Profile'
     expect(page).to have_selector('img')
-    expect(page).to have_content('added')
     expect(page).to have_content(ad_content)
   end
 

@@ -5,22 +5,15 @@ class AdsController < ApplicationController
 
     @ad.keywords = get_keywords_from_params
     current_user.ads << @ad
-
-    if @ad.save
-      flash[:notice] = t(:added, scope: [:ads])
-      params[:ad] = nil
-    else
-      flash[:error] = @ad.errors.full_messages.join('. ')
-    end
-
-    redirect_to user_path(current_user, :ad => params[:ad])
+    @ad.save
+    load_dropdown_collections
+    respond_with @ad
 
   end
 
   def destroy
     @ad.destroy
-    flash[:notice] = t(:deleted, scope: [:ads])
-    redirect_to session.delete(:return_to)
+    respond_with @ad
   end
 
   def index
@@ -40,7 +33,8 @@ class AdsController < ApplicationController
     @ad.keywords = get_keywords_from_params
     @ad.attributes = params[:ad]
     @ad.save
-    redirect_to @ad
+    load_dropdown_collections
+    respond_with @ad
 
   end
 
@@ -57,12 +51,11 @@ class AdsController < ApplicationController
   end
 
   def edit
+    load_dropdown_collections
+  end
 
-    @ad_types = AdType.all
-    @places = Place.all
-    @sections = Section.all
-    @currencies = Currency.all
-
+  def new
+    load_dropdown_collections
   end
 
   def change_state
@@ -83,5 +76,13 @@ class AdsController < ApplicationController
 
   end
 
+  def load_dropdown_collections
+
+    @ad_types = AdType.all
+    @places = Place.all
+    @sections = Section.all
+    @currencies = Currency.all
+
+  end
 
 end
