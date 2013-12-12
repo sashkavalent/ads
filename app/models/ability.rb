@@ -10,7 +10,7 @@ class Ability
     if user.role.user?
 
       can :read, Ad
-      can :show, User
+      can :show, User, :role => 'user'
 
       can :destroy, user.ads
       can :update, Ad, :state => 'drafting', :user_id => user.id
@@ -29,7 +29,7 @@ class Ability
     if user.role.admin?
       can :read, :all
       can :destroy, :all
-      can :update, User
+      can :make_admin, User
       can :change_state, Ad, :state => 'posting'
       can :manage, AdType
       can :manage, Place

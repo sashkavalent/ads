@@ -1,4 +1,5 @@
 class Ad < ActiveRecord::Base
+
   attr_accessible :content, :photos_attributes, :ad_type_id, :place_id, :subsection_id, :currency_id, :price
 
   belongs_to :user
@@ -19,6 +20,19 @@ class Ad < ActiveRecord::Base
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
   default_scope order: 'ads.created_at DESC'
+
+  scope :published, -> { where(state: 'published') }
+  scope :posting, -> { where(state: 'posting') }
+
+  @@per_page_small = 5
+  @@per_page_big = 12
+
+  def self.per_page_small
+    @@per_page_small
+  end
+  def self.per_page_big
+    @@per_page_big
+  end
 
   state_machine :state, :initial => :drafting do
 

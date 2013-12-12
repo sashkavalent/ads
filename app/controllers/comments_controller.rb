@@ -6,27 +6,27 @@ class CommentsController < ApplicationController
     comment = current_user.comments.build(params[:comment])
     comment.ad_id = params[:ad_id]
 
-    ad = Ad.find_by_id(params[:ad_id])
-    ann = ad.user.announcements.build(ad_id: params[:ad_id],
-      content: t(:ad_was, scope: [:ads]) +
-      t(:commented, scope: [:comments]))
+    ann = current_user.announcements.build(ad_id: params[:ad_id],
+      content: t(:ad_was, scope: [:ads]) + t(:commented, scope: [:comments]))
+    ann.save
+    ad = Ad.find(params[:ad_id])
 
-    if comment.save && ann.save
-      flash[:notice] = t(:added, scope: [:comments])
-      params[:comment] = nil
-    else
-      flash[:error] = @comment.errors.full_messages.join('. ')
-    end
-    redirect_to :back
+    comment.save
+
+    respond_with(comment,
+      :location => ad_path(ad)) do |format|
+
+      if !comment.save
+        format.html { redirect_to ad }
+      end
+
+  end
 
   end
 
   def destroy
-
     @comment.destroy
-    flash[:notice] = t(:deleted, scope: [:ads])
-    redirect_to(:back)
-
+    respond_with(@comment, :location => ad_path(@comment.ad))
   end
 
 end

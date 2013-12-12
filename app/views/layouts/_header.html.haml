@@ -7,7 +7,7 @@
           %li= link_to 'Home', root_path
           %li= link_to 'Help', help_path
           - if current_user.try(:role).try(:user?)
-            %li= link_to 'Announcements', announcements_path
+            %li= link_to 'Announcements', user_announcements_path(current_user)
           - if current_user.try(:role).try(:admin?)
             %li.dropdown
               = link_to '#', :class => "dropdown-toggle", |

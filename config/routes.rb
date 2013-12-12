@@ -3,7 +3,6 @@ Ads::Application.routes.draw do
   root :to => 'ads#index'
 
   get '/help', to: 'static_pages#help'
-  get '/about', to: 'static_pages#about'
 
   resources :ads do
     resources :comments, :only => :create
@@ -15,7 +14,16 @@ Ads::Application.routes.draw do
   devise_for :users, :controllers => { :users => "users",
       :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :users, only: [:index, :destroy, :show, :update]
+  resources :users, only: [:index, :destroy, :show] do
+    put 'make_admin', :on => :member
+
+    resources :announcements, only: :index do
+      delete 'clear', :on => :collection
+    end
+
+  end
+
+  resources :announcements, only: :destroy
 
   resources :ad_types, only: [:create, :destroy, :new]
   resources :places, only: [:create, :destroy, :new]
@@ -26,8 +34,5 @@ Ads::Application.routes.draw do
   end
   resources :subsections, only: [:destroy]
 
-  resources :announcements, only: [:index, :destroy] do
-    delete 'clear', :on => :collection
-  end
 
 end

@@ -25,6 +25,18 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
 
+  def profile_ads(current_user)
+
+    if self.role.admin?
+      Ad.posting
+    elsif self == current_user
+      self.ads
+    else
+      self.ads.published
+    end
+
+  end
+
   def self.find_for_oauth access_token
 
     info = access_token.info

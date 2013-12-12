@@ -16,11 +16,11 @@
               data: { confirm: 'You sure?' }, title: @user.name
       %br
 
-      - if ((can? :update, @user) && (@user.role.user?))
-        = link_to 'to admin', {:controller => "users", :action => "update",
-          :id => @user, :role => 'admin' }, :method => :put,
+      - if ((can? :make_admin, @user) && (@user.role.user?))
+        = link_to 'make admin', {:controller => :users, :action => :make_admin },
+          :method => :put,
           data: { confirm: 'You sure?' }, title: @user.name
       %br
 
-= link_to 'create new ad', new_ad_path if can? :create, @ad
+= link_to 'create new ad', new_ad_path if @user == current_user
 = render 'ads/ads'

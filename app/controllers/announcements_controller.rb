@@ -3,16 +3,16 @@ class AnnouncementsController < ApplicationController
 
   def destroy
     @announcement.destroy
-    redirect_to :back
+    respond_with(@announcement,
+      :location => user_announcements_path(current_user))
   end
 
   def index
-    @announcements = Announcement.where(user_id: current_user)
+    @announcements = current_user.announcements
   end
 
   def clear
-    @announcements = Announcement.where(user_id: current_user)
-    @announcements.destroy_all
+    current_user.announcements.destroy_all
     redirect_to :back
   end
 end

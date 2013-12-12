@@ -6,7 +6,7 @@
     = @announcements.count
     = 'announcement'.pluralize(@announcements.count)
 
-  = link_to 'clear all', clear_announcements_path,         |
+  = link_to 'clear all', clear_user_announcements_path(current_user),         |
     :method => :delete, data: { confirm: 'Are you shure?'} |
 
   %ul.models

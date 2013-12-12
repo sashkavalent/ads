@@ -2,51 +2,23 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.paginate(:page => params[:page], :per_page => 12)
+    @users = User.paginate(:page => params[:page], :per_page => Ad.per_page_big)
   end
 
   def destroy
-
     @user.destroy
-    flash[:notice] = t(:deleted, scope: [:users], user: @user.name)
-    redirect_to users_path
-
+    respond_with(@user)
   end
 
   def show
-
-    if params['id'] == current_user.id.to_s
-
-      if current_user.role.admin?
-        @ads = Ad.where(state: 'posting').paginate(:page => params[:page], :per_page => 5)
-      else
-        @ads = Ad.where(user_id: params['id']).
-          paginate(:page => params[:page], :per_page => 5)
-        @ad = current_user.ads.build(params[:ad]) if user_signed_in?
-        @ad_types = AdType.all
-        @places = Place.all
-        @sections = Section.all
-        @currencies = Currency.all
-      end
-
-    else
-
-      @ads = Ad.where(state: 'published', user_id: params['id']).
-        paginate(:page => params[:page], :per_page => 5)
-
-    end
-
-    @user = User.find_by_id(params['id'])
-
+    @ads = @user.profile_ads(current_user).
+      paginate(:page => params[:page], :per_page => Ad.per_page_small)
   end
 
-  def update
-
-    if current_user.role.admin?
-      @user.role = :admin
-    end
+  def make_admin
+    @user.role = :admin
     @user.save
-    redirect_to(:back)
-
+    respond_with(@user, :location => @user)
   end
+
 end
