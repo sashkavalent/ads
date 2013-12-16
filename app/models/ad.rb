@@ -24,15 +24,24 @@ class Ad < ActiveRecord::Base
   scope :published, -> { where(state: 'published') }
   scope :posting, -> { where(state: 'posting') }
 
-  @@per_page_small = 5
-  @@per_page_big = 12
+  @@Per_page_small = 5
+  @@Per_page_big = 12
+  @@max_price = 2 ** (1.size * 8 - 1)
 
+
+  def self.max_price
+    @@max_price
+  end
   def self.per_page_small
-    @@per_page_small
+    @@Per_page_small
   end
   def self.per_page_big
-    @@per_page_big
+    @@Per_page_big
   end
+
+  validates_numericality_of :price, greater_than_or_equal_to: 0,
+    less_than: max_price, :allow_nil => true,
+    :message => "can only be ranged number"
 
   state_machine :state, :initial => :drafting do
 

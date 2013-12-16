@@ -1,6 +1,16 @@
 @import "bootstrap";
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
+.small-font {
+	font-size: 0.9em;
+	padding-top: 7px;
+}
+ul.no-border {
+	border: 0px;
+}
+.tagit {
+	width: 50%;
+}
 #ad_price {
 	float: left;
 	margin-top: 5px;
@@ -9,52 +19,52 @@ $grayMediumLight: #eaeaea;
 	width: 60px;
 	margin-left: 3px;
 }
-	table {
-		width: 100%;
-	}
-	td.right {
-		text-align: right;
-	}
-	.comments-header {
-		padding: 20px 0 15px 0px;
-		font-size: 1.4em;
-		color: $lightGray;
-	}
-	input[type="checkbox"] {
-		margin: 0 0 0 0;
-	}
-	form {
-		margin-top: 20px;
-	}
-	.inline {
-		display: inline
-	}
-	li {
-  	list-style-type: none;
-	}
-	.cont a {
-		color: #444444;
-	}
-   .photo {
-    margin: 0 10px 0 0; /* Отступы */
-    padding: 10px 0; /* Поля сверху и снизу */
-    text-align: center; /* Выравнивание по центру */
-    display: inline-block; /* Строчно-блочный элемент */
-   }
-   .photo p {
-    margin: 0; /* Отступы */
-   }
-	.form {
-		margin-left: 42%;
-	}
-	label, i {
-		font-size: 0.9em;
-		line-height: 0.7em;
-	}
-	.center {
-	margin-top: -15px;
-		text-align: center;
-	}
+table {
+	width: 100%;
+}
+td.right {
+	text-align: right;
+}
+.comments-header {
+	padding: 20px 0 15px 0px;
+	font-size: 1.4em;
+	color: $lightGray;
+}
+input[type="checkbox"] {
+	margin: 0 0 0 0;
+}
+form {
+	margin-top: 20px;
+}
+.inline {
+	display: inline
+}
+li {
+	list-style-type: none;
+}
+.cont a {
+	color: #444444;
+}
+ .photo {
+  margin: 0 10px 0 0; /* Отступы */
+  padding: 10px 0; /* Поля сверху и снизу */
+  text-align: center; /* Выравнивание по центру */
+  display: inline-block; /* Строчно-блочный элемент */
+ }
+ .photo p {
+  margin: 0; /* Отступы */
+ }
+.form {
+	margin-left: 42%;
+}
+label, i {
+	font-size: 0.9em;
+	line-height: 0.7em;
+}
+.center {
+margin-top: -15px;
+	text-align: center;
+}
 /* ads */
 
 .models {

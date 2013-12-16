@@ -8,7 +8,6 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'pg'
 gem 'cancan'
 gem 'devise'
-gem 'bootstrap-sass', '2.2.2'
 gem 'nested_form'
 gem 'paperclip', '~> 3.0'
 gem 'whenever'
@@ -19,14 +18,17 @@ gem 'enumerize'
 gem 'mysql2', '0.3.13'
 gem 'thinking-sphinx', '3.0.6'
 gem 'omniauth'
+gem 'haml-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 gem 'simple_form'
 gem 'responders'
+gem 'jquery-ui-rails'
+gem 'gon'
 
 group :development, :test do
-	gem 'pry', '0.9.12.2'
+  gem 'pry', '0.9.12.2'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
@@ -36,10 +38,11 @@ group :development, :test do
 end
 
 group :assets do
+  gem 'bootstrap-sass', '2.2.2'
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
-  gem 'haml-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails', '2.0.2'

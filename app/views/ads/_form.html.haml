@@ -1,5 +1,11 @@
 = simple_nested_form_for @ad do |f|
+
   = f.input :content, required: true, :class => 'info'
+
+  = label_tag :keywords
+
+  %ul.writable#keywords
+  %br
 
   = collection_select(:ad, :ad_type_id, @ad_types,         |
     :id, :name, {}, { :class => 'selectpicker show-tick'})
@@ -11,14 +17,11 @@
   = grouped_collection_select(:ad, :subsection_id, @sections, :subsections, :name,
     :id, :name, {}, { :class => 'selectpicker show-tick', 'data-live-search' => "true"})
 
-  = f.input :price
+  = f.input :price, error: false, input_html: { min: 0, max: Ad.max_price }
   = collection_select(:ad, :currency_id, @currencies, |
     :id, :name)
-  %br/
-
-  = label_tag :keywords
-  = text_area_tag :keywords,
-    @ad.keywords.map { |keyword| keyword.name }.join(', '), :size => '10x10'
+  .control-group.error
+    = f.error :price
 
   = f.fields_for :photos, :html => { :multipart => true} do |photo_form|
     = photo_form.file_field :file, :accept => 'image/*'
@@ -29,3 +32,4 @@
   %p= f.link_to_add 'Add photo', :photos
 
   = f.submit 'Ok', :class => 'zocial'
+

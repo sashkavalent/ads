@@ -9,6 +9,7 @@ ThinkingSphinx::Index.define :ad, :with => :active_record do
   indexes subsection(:name)
   indexes place(:name)
   indexes keywords(:name)
+  indexes subsection.section.name, :as => :section
 
   has created_at, published_at
 end

@@ -1,10 +1,15 @@
 %table
   %tr
+
     %td
       = render 'ad_main', :ad => @ad
-      = render 'keywords', :keywords => @ad.keywords
+      - if !@ad.keywords.blank?
+        .small-font Keywords:
+        %ul.readOnly#keywords.no-border
+
     %td.right
       = render 'ads/links', :ad => @ad
+
 = render 'comments/comments', :comments => @ad.comments
 - if can? :create, Comment
   = render 'comments/new_form'

@@ -62,21 +62,8 @@ ActiveRecord::Schema.define(:version => 20131210153823) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "hash_keys", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "keywords", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "payments", :force => true do |t|
-    t.integer  "wallet_id"
-    t.integer  "amount"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -133,12 +120,5 @@ ActiveRecord::Schema.define(:version => 20131210153823) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "wallets", :force => true do |t|
-    t.integer  "balance"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end
