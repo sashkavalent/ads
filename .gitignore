@@ -15,6 +15,7 @@
 /tmp
 /public/assets
 /config/database.yml
+/config/extras
 /config/development.sphinx.conf
 /config/initializers/devise.rb
 db/sphinx
